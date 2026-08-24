@@ -1,1 +1,12 @@
-The collected mathematical writings and scripts of John Atwell Moody, including research papers and expository writings. Topics include the Burau representation, Moody induction and the Goldie rank conjecture, Nash transforms, Hilbert's 16th problem, well-foundedness of distributivity, standing waves, and other mathematical work. Disambiguation: this is not the late John Atwell Moody Sr (1923-2018) who was an engineer.
+This repository is a version-controlled public copy of the website
+spectrograph.uk.
+
+The published website is available at:
+
+https://spectrograph-uk.github.io/mathematical-archive/
+
+Its main page contains an interactive JavaScript spectrograph based on
+atomic spectra and the wave equation.
+
+Further information is available through the Help pages, which include
+links to mathematical papers and other academic work.
