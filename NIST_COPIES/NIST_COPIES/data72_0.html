@@ -1,0 +1,4189 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>NIST ASD Levels Output</title>
+<link title="ASD 5.0" rel="start" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 4.0" rel="ASD 4" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 3.0" rel="ASD 3" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 2.0" rel="ASD 2" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 1.3" rel="ASD 1" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Yuri Ralchenko" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Alexander Kramida" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Joseph Reader" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Version History" rel="Version" href="https://physics.nist.gov/PhysRefData/ASD/Html/verhist.shtml" />
+<link title="NIST Main Page" rel="bookmark" href="https://www.nist.gov/" />
+<link title="NIST Physical Measurement Lab" rel="bookmark" href="https://physics.nist.gov/" />
+<link title="Physical Reference Data" rel="bookmark" href="https://pml.nist.gov/data " />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="https://physics.nist.gov/PhysRefData/ASD/Scripts/1.css" />
+<script async id="_fed_an_js_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NIST&amp;pua=UA-37115410-46&amp;yt=true&amp;exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c" type="text/javascript"></script>
+<script type="text/javascript">//<![CDATA[
+
+function setFocus() {
+  var de = document.getElementById("de");
+  var idsSp = document.getElementById("ids_sp");
+  var dom = document.domain;
+  var href = document.location.href;
+  if ( href.match(/^http:\/\/ekron\.nist\.gov\/ASD\/DataEntry\/.*/i) ) {
+    de.value = 1;
+  }
+  if ( dom.match(/^ekron\.nist\.gov$/i) ) {
+    idsSp.style.display="inline";
+  }
+  document.levels.spectrum.disabled = true;
+}
+function submit_update() {
+  var submitRetrieve = document.getElementById("submit_retrieve");
+  var spCrit = document.getElementById("spectrum_crit");
+  if ( (spCrit != null) && (submitRetrieve != null) ) {
+    var spPrev = spCrit.innerHTML;
+    spPrev = spPrev.toLowerCase().replace(/  /gm,"");
+    spPrev = spPrev.replace(/<b>/gm,"");
+    spPrev = spPrev.replace(/<\/b>/gm,"");
+    var sp = document.getElementById("spectrum").value;
+    sp = sp.toLowerCase().replace(/  /gm,"");
+    if ( sp != spPrev ) {
+      submitRetrieve.value = "Update Criteria";
+    } else {
+  		document.levels.spectrum.disabled = false;
+      submitRetrieve.value = "Retrieve";
+    }
+  }
+  return true;
+}
+
+//]]></script>
+<script src="/js/clickjack.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body bgcolor="white" >
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/balloon.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/setup.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/go.js"></script>
+<span>
+<a href="#start"><img src="/Images/dot_t.gif" width="1" height="1" style="border:0;margin-top:0;margin-bottom:0" alt="[skip navigation]" /></a>
+</span>
+<table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+<map name="NIST-PL" id="NIST-PL">
+  <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" alt="National Institute of Standards and Technology" title="National Institute of Standards and Technology"/>
+  <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory" title="NIST Physical Measurement Laboratory"/>
+</map>
+<a id="start"><!-- filler --></a>
+<script type="text/javascript">
+<!-- //
+var newwindow
+//var n
+function popdef(n){
+newwindow = window.open(n,"data1","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=600,height=450");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popbib(n){
+newwindow = window.open(n,"data2","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=800");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popded(n){
+//newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=640,height=250");
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=320");if (window.focus) {newwindow.focus()}
+return true;
+}
+function popdiag(n){
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=1000");if (window.focus) {newwindow.focus()}
+return true;
+}
+// -->
+</script>
+
+<table style="width:100%">
+  <tr>
+    <td style="color:#223388; font-size:150%; vertical-align:middle"><span style="color:black; font-weight:600">NIST Atomic Spectra Database Levels Data</span><p>
+      <sup></sup>Hf  I &nbsp;&nbsp;217 Levels Found<br />
+<b><font size="+1"><i>Z</i> = 72, Hf isoelectronic sequence</font></b><span style="font-size=300%">&nbsp;</span></p>
+    </td>
+    <td style="text-align:right; vertical-align:middle">
+<div class='ref'>
+<b>Example of how to reference these results:</b><br />
+
+Kramida,&nbsp;A., Ralchenko,&nbsp;Yu., Reader,&nbsp;J., and NIST ASD Team (2019).
+  <i>NIST Atomic Spectra Database</i> (ver.&nbsp;5.7.1),
+  [Online]. Available: <span style="color:#0000cc;">https://physics.nist.gov/asd</span>
+  [2019, December 25].
+  National Institute of Standards and Technology, Gaithersburg, MD.
+	DOI: <span style="color:#0000cc;">https://doi.org/10.18434/T4W30F</span>
+<br />
+<div style="text-align: right; font-size: x-small">
+<a href="javascript:void(0)" onclick="popdef('/cgi-bin/ASD/bibtex.pl?y=2019&amp;m=December&amp;d=25');return true" target="_top">BibTex Citation</a> (new window)
+</div>
+</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="color:#655665; font-family: helvetica,arial; font-size:80%"><b>
+Data on  level compositions  are not available for this ion in ASD
+<p/><span class="hnd">Some data for neutral and singly-charged ions are available in the <a href="/PhysRefData/Handbook/index.html" target="_new">Handbook of Basic Atomic Spectroscopic Data</a></span>
+</b></td>
+  </tr>
+</table>
+
+<P/>
+<table style="background-color:#004400">
+  <tr>
+    <td colspan="2" style="color: white; text-align:center">
+      &nbsp;&nbsp;Primary data source&nbsp;&nbsp;
+    </td>
+    <td style="color: white; text-align:center">
+      Query NIST Bibliographic Database for <b>Hf  I</b> (new window)
+    </td>
+  </tr>
+  <tr>
+<!--    <td style="text-align:center; background-color:#DDDDBB">-->
+    <td class='brt2'>
+      &nbsp;<a onmouseover="self.status='Bibliographic Reference for Hf I';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=3466&amp;comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;type=E');return false">Moore 1958</a>, <a onmouseover="self.status='Bibliographic Reference for Hf I';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=8844&amp;comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;type=E');return false">Sansonetti&nbsp;and&nbsp;Martin&nbsp;2005</a>&nbsp;
+    </td>
+    <td class='blf2'>
+      &nbsp;&nbsp;&nbsp;The ionization limit is from <a onmouseover="self.status='Bibliographic Reference for Hf I';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=14027&amp;comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;type=E');return false">Matsuoka and Hasegawa 2006 </a>. Note: the analysis was significantly revised and extended since Moore's level list had been compiled. In the present level list, only a few new levels have been added to Moore's list. Consult the current bibliography for the up-to-date information.
+    </td>
+    <td class='bcn2'>
+      <A HREF="javascript:void(0)" ONCLICK="popbib('https://physics.nist.gov/cgi-bin/ASBib1/Elevbib/make_query.cgi?spectra=Hf%20I&amp;method=EL&amp;method=TE&amp;method=ND&amp;method=IP&amp;method=SF&amp;method=QF&order=1');return false"
+        ONMOUSEOVER="self.status='Hf  I: bibliography energy levels query';return true;"
+        ONMOUSEOUT="self.status=''; return true;" TARGET=_blank>Literature on Hf  I Energy Levels</A>
+    </td>
+  </tr>
+</table>
+  <br>
+<table style="background-color:#FFFEEE; border:=1" frame="box" rules="groups" CELLSPACING="0" CELLPADDING="1">
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<tbody>
+<tr style="vertical-align:middle; background-color:#177A9C">
+<TH scope="col" style="text-align:left">&nbsp;Configuration&nbsp;</TH>
+<TH scope="col">&nbsp;Term&nbsp;</TH>
+<TH scope="col">&nbsp;<i>J</i>&nbsp;</TH>
+<TH scope="col">&nbsp;Level&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col">&nbsp;Uncertainty&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col">&nbsp;Land&eacute;-g&nbsp;</TH>
+<TH scope="col" style="text-align:left">&nbsp;Reference&nbsp;</TH>
+</tr>
+</tbody>
+<tbody>
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>3</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;          0.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.695&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;      2 356.68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.083&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;      4 567.64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.240&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>3</sup>P&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;      5 521.78&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.000&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;      6 572.55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.500&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;      8 983.75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.300&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>1</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;      5 638.62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.165&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>1</sup>G&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     10 532.54&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.008&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(b&nbsp;<sup>2</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>3</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>14 017.83</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.55&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>16 163.36</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>18 381.49</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.29&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>3</sup>(b&nbsp;<sup>4</sup>F)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>5</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     14 092.28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     14 740.68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     15 673.33&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.25&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     16 766.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.36&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     17 901.28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.40&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(b&nbsp;<sup>2</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>3</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>14 435.13</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.89&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>14 541.68</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.08&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>18 224.99</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.24&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>5</sup>G&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>18 011.05</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.40&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>19 292.69</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.95&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>20 960.09</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.16&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     <i>22 901.34</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.25&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(b&nbsp;<sup>2</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>3</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>18 143.37</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.43&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;     <i>18 270.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>19 791.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.41&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>3</sup>(b&nbsp;<sup>4</sup>P)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>5</sup>P&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     20 784.87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     20 908.42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.74&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     22 199.08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>5</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>21 738.70</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.04&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>22 450.56</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>23 448.61</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>24 785.23</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.33&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     <i>26 202.53</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.36&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>3</sup>(b&nbsp;<sup>4</sup>F)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;b&nbsp;<sup>3</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     22 880.24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     23 252.81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     23 327.71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.90&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(b&nbsp;<sup>2</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>1</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>23 644.74</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.075&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>3</sup>(&nbsp;)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;240&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     24 085.14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>5</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;     <i>24 966.78</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>25 194.47</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.45&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>25 634.21</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.42&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>26 305.78</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.400&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>27 516.41</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.475&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;250&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     25 084.14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;252&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     25 281.81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;256&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     25 678.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(b&nbsp;<sup>2</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>1</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>26 463.93</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.000&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;267&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     26 715.37&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;269&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     26 918.14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;270&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     27 074.50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;y&nbsp;<sup>3</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>27 149.64</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>27 654.32</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.153&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>30 733.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.28&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>2</sup>P)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;y&nbsp;<sup>3</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>27 533.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.266&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;     <i>28 526.19</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>29 401.44</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.75&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>2</sup>P)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>3</sup>S&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>28 047.91</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.94&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;282&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     28 200.54&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;y&nbsp;<sup>3</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>28 267.39</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.145&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>28 790.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.96&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>29 996.81</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.23&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;285&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     28 527.97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>3</sup>G&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>28 583.69</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.95&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>29 246.65</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07?&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     <i>30 976.99</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.21&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>P)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;y&nbsp;<sup>5</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>29 752.84</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.50&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>31 342.51</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.39&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>31 943.31</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.41&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;301&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     30 146.40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;310&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     31 054.64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.09&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;311&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     31 119.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.89&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(b&nbsp;<sup>2</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>1</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>31 610.80</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;316&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     31 619.97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.02&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;319&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>31 943.84</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>6<i>s</i>(a&nbsp;<sup>4</sup>P)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>5</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>31 952.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.080&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>33 121.48</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.345&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>33 139.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.442&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;320&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     32 091.59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.16&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>(<sup>3</sup>F)6<i>s</i>(<sup>2</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>3</sup>G&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>32 533.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.950&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=16323&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=16323&amp;type=E');return false">L16323</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;331&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>33 137.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.775&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;335&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>33 538.15</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.822&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;339&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>33 949.28</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.09&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>33 994.71</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.04&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>(<sup>1</sup>G)6<i>s</i>(<sup>2</sup>G)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>3</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>33 994.86</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.93&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=16323&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=16323&amp;type=E');return false">L16323</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;345&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>34 596.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.972&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;348&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>34 805.89</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.997&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>(<sup>3</sup>F)6<i>s</i>(<sup>2</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>1</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>34 877.04</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.960&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=16323&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=16323&amp;type=E');return false">L16323</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;349&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>34 947.95</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.16&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;349&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     34 991.64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.50&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;351&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     35 115.28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.11&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;352&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>35 284.33</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.055&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;354&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>35 453.83</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.002&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;359&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     <i>35 993.70</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;360&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>36 075.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;362&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>36 237.34</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.042&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;364&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     <i>36 419.26</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;365&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     36 523.84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.26&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;366&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>36 609.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.255&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;367&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>36 772.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.156&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>(<sup>1</sup>G)6<i>s</i>(<sup>2</sup>G)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>3</sup>G&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>36 850.04</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.09&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=16323&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=16323&amp;type=E');return false">L16323</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     <i>38 845.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=16323&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=16323&amp;type=E');return false">L16323</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;369&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>36 949.29</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.53&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;370&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     37 038.83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.06?&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;372&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>37 269.82</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;373&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     37 336.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.48&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;381&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>38 151.71</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;382&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     38 289.38&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.09&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;383&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>38 325.47</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.154&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;384&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>38 407.80</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.29&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>2</sup>(<sup>3</sup>F)6<i>s</i>(<sup>2</sup>F)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>1</sup>G&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>38 987.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.14&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=16323&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=16323&amp;type=E');return false">L16323</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;390&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>39 081.86</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;391&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     39 127.61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.31&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;391&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>39 193.91</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.29&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;392&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     39 286.19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;394&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>39 435.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.357&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;395&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     39 546.34&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.81&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;397&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>39 704.41</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.625&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;397&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     39 788.89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.02&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     39 790.70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.58&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;398&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;     39 843.87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;401&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     40 130.23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.21&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;401&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>40 194.46</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.510&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;402&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>40 267.35</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.08&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;405&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     40 513.55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.11&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;406&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     40 618.62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.50&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     40 636.26&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07?&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;407&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>40 704.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>40 767.44</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;408&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     40 882.06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.23&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;409&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2,3?&nbsp;</td>
+ <td class="fix">&nbsp;     <i>40 957.54</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;411&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>41 193.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4121&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     41 211.03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.45&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4129&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     41 298.36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.83&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;414&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>41 422.43</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;414&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     41 475.84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.27?&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;417&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     41 739.36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.33&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;417&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>41 768.67</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.927&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;418&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>41 824.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;420&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>42 036.37</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.23&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;420&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     42 061.59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;421&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     42 111.70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     42 175.58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.30?&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;422&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     42 283.48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.34&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;423&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>42 302.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.87?&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;423&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     42 360.90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;424&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>42 485.50</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.86&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;426&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     42 670.81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.24&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;427&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     42 719.58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     42 782.55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.53&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;428&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>42 871.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;430&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     43 016.47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;431&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>43 104.71</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.09&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;434&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     43 489.28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;435&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>43 517.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;435&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     43 561.76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.47&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;437&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>43 786.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;438&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     43 838.30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.30&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;438&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>43 844.63</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;441&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     44 131.99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.40&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;442&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>44 257.54</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;443&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     44 375.42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.35&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;447&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     44 777.50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.25&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;450&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     45 083.28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;451&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>45 112.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>45 138.88</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;452&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     45 254.91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     45 270.13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;453&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     45 364.84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;454&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>45 455.15</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;454&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     45 474.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.41&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;456&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     45 649.36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.18&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;457&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     45 728.62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;457&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     <i>45 799.48</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;459&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     45 994.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;460&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     46 056.21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;461&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>46 170.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;461&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     46 183.08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;462&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     46 280.26&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     46 282.34&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;464&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     46 437.72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;467&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>46 775.98</i><a class='bal' href="javascript:void(toggleBalloon('?'))" onmouseover="showBalloon('?',event);self.status='Help';return true" onmouseout="hideBalloon('?',event);self.status='';return true">?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;468&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     46 860.75&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;469&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     46 961.96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     46 966.61&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     46 992.38&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;469&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>46 981.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;473&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     47 304.97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     47 345.93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;475&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     <i>47 590.09</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;476&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     47 606.21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;477&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     47 702.41&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;478&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     47 874.44&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;479&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     47 938.44&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;480&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     48 022.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     48 049.43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;480&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     <i>48 047.90</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;481&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     48 129.57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;483&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     48 319.08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     48 356.90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;484&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     48 407.27&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;485&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     48 594.84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     48 598.99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;487&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     48 708.40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4880&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     48 809.77&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4886&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     48 869.43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;489&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     <i>48 951.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;490&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     49 005.35&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;495&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     49 540.65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;496&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     49 623.40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;497&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     49 791.86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;503&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     50 393.21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;514&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     51 408.65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+ <tr class="lmt"> <td class="lft">Hf&nbsp;II&nbsp;(5<i>d</i>6<i>s</i><sup>2</sup>&nbsp;<sup>2</sup>D<sub>3/2</sub>)&nbsp;</td>
+ <td class="cnt">&nbsp;Limit&nbsp;</td>
+
+ <td class="cnt">&nbsp;---&nbsp;</td>
+ <td class="fix">&nbsp;     55 047.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;                 0.1&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=14027&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=14027&amp;type=E');return false">L14027</a>,<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Hf I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=10033&comment_code=&amp;element=Hf&amp;spectr_charge=1&amp;ref=10033&amp;type=E');return false">L10033</a>&nbsp;</td>
+</tr>
+
+<tr>
+   <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+</tr>
+</tbody>
+</table>
+
+<p style="color:black; font-family: helvetica,arial; font-weight:bold">If you did not find the data you need, please <a href="mailto:alexander.kramida@nist.gov?subject=Missing%20data%20in%20ASD&amp;body=Z=72%200%20levels">inform the ASD Team</a>.</p><table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+
+</body>
+</html>

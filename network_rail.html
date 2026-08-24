@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><title>Protected Species</title>
+<script>
+function f(){
+var h=window.innerHeight
+var w=window.innerWidth
+var max=w/540
+if(max<h/360)max=h/360
+var vid=document.getElementById("vid")
+vid.style.position="absolute"
+vid.style.top="-20px"
+vid.style.left="-20px"
+vid.style.width=(max*540+40).toString()+"px"
+vid.style.height=(max*360+40).toString()+"px"
+document.body.scrollTop=2/3*(document.body.scrollHeight-h)
+}
+window.onresize=f
+</script>
+
+<body onload="f()" style="overflow:hidden">
+
+<video id="vid" autoplay loop>
+
+  <source src="network_rail_clip.mp4" type="video/mp4">
+
+ 
+
+</video></body></html>

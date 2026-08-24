@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<head>
+
+<title>Mathematical papers of John Atwell Moody</title>
+<script type="text/javascript" src="transfer.js"></script>
+<style>
+a{white-space:nowrap}
+span{text-decoration:underline;cursor:pointer;color:#3344FF;white-space:nowrap;display:none}
+div::-webkit-scrollbar {
+	width: 52px;
+}
+
+div::-webkit-scrollbar-track {
+	background: #DDDDDD;
+	border: 3px solid #BBBBBB;
+}
+
+div::-webkit-scrollbar-thumb {
+	background: -webkit-linear-gradient(left, #747c90, #552640);
+	border: 1px solid #333;
+	box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+}
+   
+
+</style>
+<script>
+function downloadMouseOver(){
+window.oncontextmenu=""
+}
+function downloadMouseOut(){
+window.oncontextmenu=function(e){e.preventDefault();return false}
+}
+function loadd(){
+document.body.style.overflow="hidden" // for case when scripts are enabled
+var wq=document.body.getElementsByTagName("span")
+for(var i=0;i<wq.length;i++){wq[i].style.display="inline"} // for case when scripts are enabled
+
+window.oncontextmenu=function(e){e.preventDefault();return false}
+document.getElementById("box").style.height=window.innerHeight.toString()+"px"
+var a=document.getElementsByTagName("span")
+for(i in a){a[i].oncontextmenu=a[i].onclick}
+var b=document.getElementsByTagName("a")
+for(i in b){b[i].onmouseover=downloadMouseOver;b[i].onmouseout=downloadMouseOut}
+var ll=window.location.search.replace(/^\?/,"")
+if(ll.length>5)show(ll)
+}
+
+function show(x){
+
+document.getElementById("pdfShower").src="/ViewerJS/index.html#http://spectrograph.uk/"+x
+console.log(document.getElementById("pdfShower").src)
+document.getElementById("showContainer").style.display="block"
+setTimeout("document.getElementById(\"Loading\").style.display=\"none\"",2000)
+document.getElementById("download").href=x
+document.getElementById("pdfShower").focus()
+transfer("","log","php","fn="+x,nofunc)
+return false
+}
+function nofunc(){}
+function mouseover2(){
+document.getElementById("pdfShower").src=""
+document.getElementById("showContainer").style.display="none"
+document.getElementById("Loading").style.display="block"
+}
+window.onresize=function(){document.getElementById("box").style.height=
+(window.innerHeight-50).toString()+"px"}
+</script>
+</head>
+<body style="width:100%;overflow:auto" onload="loadd()">
+<center style="color:#77BBFF;" ><div style="position:relative;width:600px" id="myname"><div style="position:absolute">Mathematical papers of John Atwell Moody</div></div></center>
+
+<div id="box" style="position:relative;width:90%;height:100%">
+
+<div id="table"  style="position:relative;left:3%;width:95%;height:100%;line-height:90px;font-size:30px;overflow-y:auto;overflow-x:hidden;z-index:50" onscroll="document.getElementById('note').style.display='none';document.getElementById('myname').style.display='none'">
+<div id="note" style="top:7px;left:80%;position:absolute;white-space:nowrap">Scrollbar &#8594;</div>
+<span  onclick="show('K-12_Economics_save.pdf')">
+K-12 Economics
+</span><br>
+<noscript><a href="K-12_Economics_save.pdf">K-12 Economics</a></noscript>
+<span  onclick="show('chemistry.pdf')">Standing Waves (chemistry.pdf)</span><br>
+<noscript><a href="chemistry.pdf">Standing Waves</a></noscript>
+<span  onclick="show('modular_forms.pdf')">Nine notes on modular forms</span>
+<br><noscript><a href="modular_forms.pdf">Nine notes on modular forms</a></noscript>
+<span  onclick="show('toric.pdf')">
+First introduction to toric geometry
+</span><br>
+<noscript><a href="toric.pdf">First introduction to toric geometry</a></noscript>
+<span  onclick="show('quantum-libre.pdf')">
+Epilogue to K-12 Economics
+</span><br><noscript><a href="quantum-libre.pdf">Epilogue to K-12 Economics</a></noscript>
+<span  onclick="show('Wittgenstein2-libre.pdf')">
+Wittgenstein's conception of intentionality, by Charles Freeman-Core
+</span><br><noscript><a href="Wittgenstein2-libre.pdf">Wittgenstein's conception of intentionality</a></noscript>
+<span  onclick="show('physics.pdf')">
+Classical mechanics primer
+
+</span><br><noscript><a href="physic.pdf">Classical mechanics primer</a></noscript>
+<span  onclick="show('physics_II.pdf')">
+Physics II
+</span><br><noscript><a href="physics_II.pdf">Physics II</a></noscript>
+<span  onclick="show('hilbert3.pdf')">
+Comments about Hilbert's 16'th problem
+
+
+
+
+</span><br><noscript><a href="hilbert3.pdf">Comments about Hilbert's 16'th problem</a></noscript>
+<span  onclick="show('connection.pdf')">
+Arc lifting for the Nash manifold
+</span><br><noscript><a href="connection.pdf">Arc lifting for the Nash manifold</a></noscript>
+<span  onclick="show('burau2.pdf')">
+Solution of the faithfulness question for the Burau representation
+
+
+</span><br><noscript><a href="burau2.pdf">Solution of the faithfulness question for the Burau representation/a></noscript>
+<span  onclick="show('intensity.pdf')">
+Treatment intensity for pathogens of a compound life cycle
+
+</span><br><noscript><a href="intensity.pdf">Treatment intensity for pathogens of a compound life cycle</a></noscript>
+<span  onclick="show('poincare7.pdf')">
+Solution of Poincare's vector field problem
+
+</span><br><noscript><a href="poincare7.pdf">Solution of Poincare's vector field problem</a></noscript>
+<span  onclick="show('euler12.pdf')">
+Euler's equation of fluid flow -- first notions
+
+
+</span><br><noscript><a href="euler12.pdf">Euler's equation of fluid flow -- first notions</a></noscript>
+<span  onclick="show('easy.pdf')">
+Easy things which number theorists know
+
+</span><br><noscript><a href="easy.pdf">Easy things which number theorists know</a></noscript
+><span  onclick="show('pub-libre.pdf')">
+Functorial affinization of Nash's manifold
+
+</span><br><noscript><a href="pub-libre.pdf">Functorial affinization of Nash's manifold</a></noscript>
+<span  onclick="show('mtheory.pdf')">
+A philosophy article about government policy, the environment (2003)
+
+</span><br><noscript><a href="mtheory.pdf">A philosophy article about government policy, the environment (2003)</a></noscript>
+<span  onclick="show('proofs.pdf')">
+Proofs of results in 'affinization'
+
+</span><br><noscript><a href="proofs.pdf">Proofs of results in 'affinization</a></noscript>
+<span  onclick="show('mathdefinition-libre.pdf')">
+Definition of Mathematics (open source with many authors)
+
+</span><br><noscript><a href="mathdefinition-libre.pdf">Definition of Mathematics (open source with many authors)</a></noscript>
+<span  onclick="show('laver.pdf')">
+R Laver, J. Moody, Well foundedness conjecture about left distributivity
+
+</span><br><noscript><a href="laver.pdf">R Laver, J. Moody, Well foundedness conjecture about left distributivity</a></noscript>
+<span  onclick="show('coercion-libre.pdf')">
+Judicial Impartiality
+</span><br><noscript><a href="coercion-libre.pdf">Judicial impartiality</a></noscript>
+<span  onclick="show('deformation5.pdf')">
+Deformation theory
+</span>
+<br><noscript><a href="deformation5-libre.pdf">Deformation theory</a></noscript>
+<!--
+
+<div style="font-size:40px;color:blue"> Nine notes on modular forms (separate files)</div>
+<div style="left:30px;position:relative">
+<span  onclick="show('primality.pdf')">
+1. Analytic primality testing
+
+</span><br><span  onclick="show('lefshetz.pdf')">
+2. Lefshetz numbers of modular curves
+
+</span><br><span  onclick="show('sections.pdf')">
+3. Grothendieck sections and rational points of modular curves
+
+</span><br><span  onclick="show('ratlpoints.pdf')">
+4. Integer points of modular curves (without Grothendieck sections)
+
+</span><br><span  onclick="show('conclusion.pdf')">
+5. Conclusion about modular forms
+
+
+
+</span><br><span  onclick="show('mordell.pdf')">
+6. Outline geometric proof of Mordell's conjecture
+
+
+</span><br><span  onclick="show('fermat.pdf')">
+7. Example: the Fermat equation
+
+
+
+</span><br><span  onclick="show('fermat2.pdf')">
+8. The residue calculation
+
+
+
+</span><br><span  onclick="show('positive_negative.pdf')">
+9. The meaning of positive and negative
+
+
+</span>
+</div>
+-->
+<span  onclick="show('survey11-libre.pdf')">
+On resolving singularities
+
+</span><br><noscript><a href="survey11-libre.pdf">On resolving singularities</a></noscript>
+<span  onclick="show('indeterminacy-libre.pdf')">
+Indeterminacy of a Morphism
+
+</span><br><noscript><a href="indeterminacy-libre.pdf">Indeterminacy of a Morphism</a></noscript>
+<span  onclick="show('RiemannRoch2-libre.pdf')">
+Riemann-Roch after Fulton
+
+</span><br><noscript><a href="RiemannRoch2-libre.pdf">Riemann-Roch after Fulton</a></noscript>
+
+
+<span  onclick="show('Remarks-libre.pdf')">
+Some initial remarks about it
+
+
+
+
+</span><br><noscript><a href="Remarks-libre.pdf">Some initial remarks about it</a></noscript>
+
+
+<span  onclick="show('on_resolving_vector_fields-libre.pdf')">
+On resolving vector fields
+
+</span><br><noscript><a href="on_resolving_vector_fields-libre.pdf">On resolving vector fields</a></noscript>
+
+<span  onclick="show('brauer-libre.pdf')">
+Brauer induction for G_0 of certain infinite groups (1987)
+
+</span><br><noscript><a href="brauer-libre.pdf">Brauer induction for G_0 of certain infinite groups (1987)</a></noscript>
+
+<span  onclick="show('pnp_un.pdf')">
+Proof of P&#8800;NP for a special case of unprotected source code
+
+
+</span><br><noscript><a href="pnp_un.pdf">Proof of P&#8800;NP for a special case of unprotected source code</a></noscript>
+
+
+<span  onclick="show('morepnp.pdf')">
+More about P&#8800;NP
+
+</span><br><noscript><a href="brauer-libre.pdf">More about  P&#8800;NP</a></noscript>
+
+
+
+
+
+
+<span  onclick="show('adjunction-libre.pdf')">
+Adjunction and duality.
+
+</span><br><noscript><a href="adjunction-libre.pdf">Adjunction and duality.</a></noscript>
+<span  onclick="show('hodge-libre.pdf')">
+
+Traces
+
+</span><br><noscript><a href="hodge-libre.pdf">Traces</a></noscript>
+<span  onclick="show('gauss_process.pdf')">
+Finite generation and the Gauss process.
+
+</span><br><noscript><a href="gauss_process.pdf">Finite generation and the Gauss process.</a></noscript>
+<span  onclick="show('birman_moody-libre.pdf')">
+J. Birman, J. Moody, Obstructions to trivializing a knot
+
+</span><br><noscript><a href="birman_moody-libre.pdf">J. Birman, J. Moody, Obstructions to trivializing a knot</a></noscript>
+<span  onclick="show('a3-libre.pdf')">
+Note: the subsheaf generated by the F<sub>i</sub>(O) is not finite type
+
+</span><br><noscript><a href="a3-libre.pdf">Note: the subsheaf generated by the Fi(O) is not finite type</a></noscript>
+<span  onclick="show('gorensteinization-libre.pdf')">
+On Gorensteinzation of toric varieties
+
+</span><br><noscript><a href="gorensteinization-libre.pdf">On Gorensteinzation of toric varieties</a></noscript>
+<span  onclick="show('generalample3.pdf')">
+The complete intersection case
+
+</span><br><noscript><a href="generalample3.pdf">The complete intersection case</a></noscript>
+<span  onclick="show('blm.pdf')">
+Birman, Long, Moody, Finite dimensional representations of Artin's braid group
+
+</span><br><noscript><a href="blm.pdf">Birman, Long, Moody, Finite dimensional representations of Artin's braid group</a></noscript>
+<span  onclick="show('divisibility-libre.pdf')">
+Divisibility of ideals and blowing up
+</span><br><noscript><a href="divisibility-libre.pdf">Divisibility of ideals and blowing up</a></noscript>
+<span  onclick="show('rigidity2.pdf')">
+Relations between two singular foliations on a surface.
+
+</span><br><noscript><a href="rigidity2.pdf">Relations between two singular foliations on a surface.</a></noscript>
+<span  onclick="show('LieGroups.pdf')">
+Lie groups
+
+</span><br><noscript><a href="LieGroups.pdf">Lie groups</a></noscript>
+<span  onclick="show('realvscpx.pdf')">
+An explicit Chern character
+
+</span><br><noscript><a href="realvscpx.pdf">An explicit Chern character</a></noscript>
+<span  onclick="show('imperial.pdf')">
+Imperial College
+
+</span><br><noscript><a href="imperial.pdf">Imperial College</a></noscript>
+<span  onclick="show('newlanguage.pdf')">
+Does Matt really accuse Jerry, or is he introducing new language?
+
+</span><br><noscript><a href="newlanguage.pdf">Does Matt really accuse Jerry, or is he introducing new language?</a></noscript>
+<span  onclick="show('ziegler-libre.pdf')">
+About the Jonelle Eshbach presentment
+</span><br><noscript><a href="ziegler-libre.pdf">About the Jonelle Eshbach presentment</a></noscript>
+<span  onclick="show('talktozig-libre.pdf')">
+Letter to Ziegler
+
+</span><br><noscript><a href="talktozig-libre.pdf">Letter to Ziegler
+</a></noscript>
+<span  onclick="show('eight_unanswered.pdf')">
+The eight unanswered legal questions in the Jerry Sandusky case.
+
+
+</span><br><noscript><a href="eight_unanswered.pdf">The eight unanswered legal questions in the Jerry Sandusky case.</a></noscript>
+<span  onclick="show('judaism_and_catholicism.pdf')">
+reflections of judaism and catholicism
+
+</span><br><noscript><a href="judaism_and_catholicism.pdf">reflections of judaism and catholicism</a></noscript>
+<span onclick="show('regle.pdf')">
+Three interpretations of Regle du jeu
+
+</span><br><noscript><a href="regle.pdf">Three interpretations of Regle du jeu</a></noscript>
+<span  onclick="show('privacy-libre.pdf')">
+A right of privacy reconciled with right of information
+
+</span><br><noscript><a href="privacy-libre.pdf">A right of privacy reconciled with right of information</a></noscript>
+<span  onclick="show('gender.pdf')">
+(tentative: gender)
+</span><br><noscript><a href="gender.pdf">(tentative: gender)</a></noscript>
+<span  onclick="show('thinking.pdf')">
+(tentative: thinking)
+
+</span><br><noscript><a href="thinking.pdf">(tentative: thinking)</a></noscript>
+<span  onclick="show('politics.pdf')">
+(tentative: the mathematics of politics)
+
+</span><br><noscript><a href="politics.pdf">(tentative: the mathematics of politics)</a></noscript>
+<a href="http://www.worldcourtofhumanrights.org/case99836/koreadreamlarge.mp4">
+North Korean dream video (external link)
+</a><br><a href="http://www.worldcourtofhumanrights.org/case99834/">
+Case 99834 (archived from 2011)
+</a><br><a href="http://www.thecloudproject.co.uk/" >
+Ice cream cloud project (external link)
+</a><br><a href="https://youtu.be/9C_HReR_McQ" >
+The Sloan-Pelling video (external link)
+</a><br><a href="http://www.worldcourtofhumanrights.org/case99835/newwiley.html" >
+Our research shows exactly what they need to do
+</a><br><a href="http://www.goldengem.co.uk/l.ogg" >
+(a sound file)
+</a><br><span  onclick="show('wronganswer.pdf')">
+Wrong answer on the Durham CEM 2013 familiarization sheet
+</span><br><a href="http://www.spectrograph.uk/network_rail.html" >
+Network Rail / protected species 
+</a><br><span onclick="show('hodge5-libre.pdf')">
+Hodge theory example sheet
+</span><br><noscript><a href="hodge5-libre.pdf">Hodge theory example sheet</a></noscript>
+<a href="http://spectrograph.uk" >
+The Universe Explorer</a>
+
+<br>
+
+<a href="http://www.spectrograph.uk/Northern_Lights.html">Northern Lights</a>
+<br>
+<a href="http://www.spectrograph.uk/Magnesium_Star.html">The green Magnesium Star triplet</a>
+<br>
+<a href="http://spectrograph.uk/Sodium_Doublet.html">The yellow Sodium doublet</a>
+<br>
+<a href="http://spectrograph.uk/Carbon_Spectrum.html">The Carbon spectrum</a>
+<br><br>
+</div>
+<div id="showContainer" style="position:absolute;left:10%;top:1%;width:90%;height:96%;z-index:100;display:none;border-style:solid;border-width:2px;border-color:#668855">
+<a  id="download" style="font-size:30px;color:#FF0044;position:absolute;top:2%;left:20%;width:8%" 
+onmouseover="downloadMouseOver()" onmouseout="downloadMouseOut()">Download link</a>
+<div style="font-size:30px;color:green;position:absolute;top:8%;text-decoration:underline;cursor:pointer;left:20%;width:30%" onclick="mouseover2()">Close the viewer</div>
+<div id="Loading" style="position:absolute;left:40%;top:30%;color:#CCCCCC;font-size:40px;z-index:50">Loading...</div>
+<img id="closeButton" style="position:absolute;top:2%;left:91%;width:6%" src="closeb.png" onclick="mouseover2()">
+<iframe id="pdfShower"  style="height:100%;width:100%;z-index:200" allowfullscreen webkitallowfullscreen>
+</iframe>
+
+</div>
+</div>
+email: john.atwell.moody@gmail.com
+</body>
+
+
+
+
+
+
+</html>

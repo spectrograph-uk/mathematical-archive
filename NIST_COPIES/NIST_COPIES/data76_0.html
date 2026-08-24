@@ -1,0 +1,5616 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>NIST ASD Levels Output</title>
+<link title="ASD 5.0" rel="start" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 4.0" rel="ASD 4" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 3.0" rel="ASD 3" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 2.0" rel="ASD 2" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 1.3" rel="ASD 1" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Yuri Ralchenko" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Alexander Kramida" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Joseph Reader" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Version History" rel="Version" href="https://physics.nist.gov/PhysRefData/ASD/Html/verhist.shtml" />
+<link title="NIST Main Page" rel="bookmark" href="https://www.nist.gov/" />
+<link title="NIST Physical Measurement Lab" rel="bookmark" href="https://physics.nist.gov/" />
+<link title="Physical Reference Data" rel="bookmark" href="https://pml.nist.gov/data " />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="https://physics.nist.gov/PhysRefData/ASD/Scripts/1.css" />
+<script async id="_fed_an_js_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NIST&amp;pua=UA-37115410-46&amp;yt=true&amp;exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c" type="text/javascript"></script>
+<script type="text/javascript">//<![CDATA[
+
+function setFocus() {
+  var de = document.getElementById("de");
+  var idsSp = document.getElementById("ids_sp");
+  var dom = document.domain;
+  var href = document.location.href;
+  if ( href.match(/^http:\/\/ekron\.nist\.gov\/ASD\/DataEntry\/.*/i) ) {
+    de.value = 1;
+  }
+  if ( dom.match(/^ekron\.nist\.gov$/i) ) {
+    idsSp.style.display="inline";
+  }
+  document.levels.spectrum.disabled = true;
+}
+function submit_update() {
+  var submitRetrieve = document.getElementById("submit_retrieve");
+  var spCrit = document.getElementById("spectrum_crit");
+  if ( (spCrit != null) && (submitRetrieve != null) ) {
+    var spPrev = spCrit.innerHTML;
+    spPrev = spPrev.toLowerCase().replace(/  /gm,"");
+    spPrev = spPrev.replace(/<b>/gm,"");
+    spPrev = spPrev.replace(/<\/b>/gm,"");
+    var sp = document.getElementById("spectrum").value;
+    sp = sp.toLowerCase().replace(/  /gm,"");
+    if ( sp != spPrev ) {
+      submitRetrieve.value = "Update Criteria";
+    } else {
+  		document.levels.spectrum.disabled = false;
+      submitRetrieve.value = "Retrieve";
+    }
+  }
+  return true;
+}
+
+//]]></script>
+<script src="/js/clickjack.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body bgcolor="white" >
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/balloon.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/setup.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/go.js"></script>
+<span>
+<a href="#start"><img src="/Images/dot_t.gif" width="1" height="1" style="border:0;margin-top:0;margin-bottom:0" alt="[skip navigation]" /></a>
+</span>
+<table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+<map name="NIST-PL" id="NIST-PL">
+  <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" alt="National Institute of Standards and Technology" title="National Institute of Standards and Technology"/>
+  <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory" title="NIST Physical Measurement Laboratory"/>
+</map>
+<a id="start"><!-- filler --></a>
+<script type="text/javascript">
+<!-- //
+var newwindow
+//var n
+function popdef(n){
+newwindow = window.open(n,"data1","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=600,height=450");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popbib(n){
+newwindow = window.open(n,"data2","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=800");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popded(n){
+//newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=640,height=250");
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=320");if (window.focus) {newwindow.focus()}
+return true;
+}
+function popdiag(n){
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=1000");if (window.focus) {newwindow.focus()}
+return true;
+}
+// -->
+</script>
+
+<table style="width:100%">
+  <tr>
+    <td style="color:#223388; font-size:150%; vertical-align:middle"><span style="color:black; font-weight:600">NIST Atomic Spectra Database Levels Data</span><p>
+      <sup></sup>Os  I &nbsp;&nbsp;274 Levels Found<br />
+<b><font size="+1"><i>Z</i> = 76, Os isoelectronic sequence</font></b><span style="font-size=300%">&nbsp;</span></p>
+    </td>
+    <td style="text-align:right; vertical-align:middle">
+<div class='ref'>
+<b>Example of how to reference these results:</b><br />
+
+Kramida,&nbsp;A., Ralchenko,&nbsp;Yu., Reader,&nbsp;J., and NIST ASD Team (2019).
+  <i>NIST Atomic Spectra Database</i> (ver.&nbsp;5.7.1),
+  [Online]. Available: <span style="color:#0000cc;">https://physics.nist.gov/asd</span>
+  [2019, December 25].
+  National Institute of Standards and Technology, Gaithersburg, MD.
+	DOI: <span style="color:#0000cc;">https://doi.org/10.18434/T4W30F</span>
+<br />
+<div style="text-align: right; font-size: x-small">
+<a href="javascript:void(0)" onclick="popdef('/cgi-bin/ASD/bibtex.pl?y=2019&amp;m=December&amp;d=25');return true" target="_top">BibTex Citation</a> (new window)
+</div>
+</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="color:#655665; font-family: helvetica,arial; font-size:80%"><b>
+Data on  level compositions  are not available for this ion in ASD
+<p/><span class="hnd">Some data for neutral and singly-charged ions are available in the <a href="/PhysRefData/Handbook/index.html" target="_new">Handbook of Basic Atomic Spectroscopic Data</a></span>
+</b></td>
+  </tr>
+</table>
+
+<P/>
+<table style="background-color:#004400">
+  <tr>
+    <td colspan="2" style="color: white; text-align:center">
+      &nbsp;&nbsp;Primary data source&nbsp;&nbsp;
+    </td>
+    <td style="color: white; text-align:center">
+      Query NIST Bibliographic Database for <b>Os  I</b> (new window)
+    </td>
+  </tr>
+  <tr>
+<!--    <td style="text-align:center; background-color:#DDDDBB">-->
+    <td class='brt2'>
+      &nbsp;<a onmouseover="self.status='Bibliographic Reference for Os I';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=3466&amp;comment_code=&amp;element=Os&amp;spectr_charge=1&amp;type=E');return false">Moore 1958</a>&nbsp;
+    </td>
+    <td class='blf2'>
+      &nbsp;&nbsp;&nbsp;The ionization limit is from <a onmouseover="self.status='Bibliographic Reference for Os I';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=8105&amp;comment_code=&amp;element=Os&amp;spectr_charge=1&amp;type=E');return false">Colarusso et al. 1997 </a>. Note: the analysis was significantly revised and extended since Moore's level list had been compiled. Consult the current bibliography list for the up-to-date information.
+    </td>
+    <td class='bcn2'>
+      <A HREF="javascript:void(0)" ONCLICK="popbib('https://physics.nist.gov/cgi-bin/ASBib1/Elevbib/make_query.cgi?spectra=Os%20I&amp;method=EL&amp;method=TE&amp;method=ND&amp;method=IP&amp;method=SF&amp;method=QF&order=1');return false"
+        ONMOUSEOVER="self.status='Os  I: bibliography energy levels query';return true;"
+        ONMOUSEOUT="self.status=''; return true;" TARGET=_blank>Literature on Os  I Energy Levels</A>
+    </td>
+  </tr>
+</table>
+  <br>
+<table style="background-color:#FFFEEE; border:=1" frame="box" rules="groups" CELLSPACING="0" CELLPADDING="1">
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<tbody>
+<tr style="vertical-align:middle; background-color:#177A9C">
+<TH scope="col" style="text-align:left">&nbsp;Configuration&nbsp;</TH>
+<TH scope="col">&nbsp;Term&nbsp;</TH>
+<TH scope="col">&nbsp;<i>J</i>&nbsp;</TH>
+<TH scope="col">&nbsp;Level&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col">&nbsp;Uncertainty&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col">&nbsp;Land&eacute;-g&nbsp;</TH>
+<TH scope="col" style="text-align:left">&nbsp;Reference&nbsp;</TH>
+</tr>
+</tbody>
+<tbody>
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>5</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;         0.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.44&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Os I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Os&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;     2 740.49&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.44&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;     4 159.32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.47&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;     5 766.14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.47&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;     6 092.79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>7</sup>(<sup>4</sup>F)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>5</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;     5 143.92&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.38&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;     8 742.83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.31&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    10 165.98&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.45&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    11 378.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.26&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    13 020.07&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.31&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>7</sup>(<sup>4</sup>F)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>3</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    11 030.58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.16&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    12 774.38&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    14 091.37&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.10&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1336&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    13 364.83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.94&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>3</sup>H&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    14 338.99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    14 848.05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.08&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    14 852.33&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.14&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1522&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    15 222.57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.61&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>7</sup>(<sup>4</sup>P)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>5</sup>P&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    15 390.76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.54&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1621&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    16 212.41&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.74&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1766&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    17 667.34&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.40&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>7</sup>(<sup>4</sup>P)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>3</sup>P&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;    18 301.40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1890&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    18 901.94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1904&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;    19 048.91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1910&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    19 108.87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.03&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1941&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    19 410.66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.97&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;1989&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    19 893.07&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.06&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2103&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    21 033.45&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.88&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2112&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    21 123.66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.94&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2130&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    21 303.36&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.26&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2256&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    22 563.65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>6<i>s</i>(<sup>6</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>7</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>22 615.69</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.62&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>23 462.90</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.55&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>25 012.93</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.73&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>25 275.42</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.04&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2331&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    23 317.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.27&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2332&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    23 322.66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.04&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2398&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    23 984.58&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2429&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    24 291.97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2506&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    25 069.71&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.89&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2559&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    25 593.94&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2560&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    25 601.55&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2795&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>27 954.32</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.04&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2813&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    28 139.52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.24&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>6<i>s</i>(<sup>6</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>7</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>28 331.77</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.59&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>28 371.68</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.74&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2841&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    28 411.95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2860&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>28 609.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>6<i>s</i>(<sup>6</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>7</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>29 099.41</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.48&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2938&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>29 381.65</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.49&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;2939&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    29 394.30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3005&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    30 056.79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3007&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>30 078.28</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.48&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3027&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>30 279.95</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.47&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3052&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>30 524.92</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.55?&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3059&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>30 591.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.54&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3245&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>32 457.44</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.84&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3268&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>32 684.61</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.47&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3312&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>33 124.48</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.63&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3412&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>34 125.40</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.44&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3436&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>34 365.33</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.42&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3480&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>34 803.82</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.37&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3509&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>35 090.50</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.57&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3561&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>35 615.92</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.51&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3591&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>35 919.55</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.29&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3634&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>36 345.81</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3663&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>36 634.54</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.36&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3680&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>36 806.27</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.48&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3681&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>36 817.94</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.28&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3682&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>36 826.39</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.41&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3697&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>36 979.51</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.31&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3780&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 808.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.26&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3790&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 908.77</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.45&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3792&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 921.71</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.45&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3813&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 130.09</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.24&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3824&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 244.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.55&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3826&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 264.16</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.23&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3833&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 330.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.41&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3848&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 486.01</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.61&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3861&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 613.44</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.29&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3874&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 741.19</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.60&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3887&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 875.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.90&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3938&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 382.95</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.18&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3940&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 406.98</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.18&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3949&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 493.80</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.93&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;3967&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 674.89</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.91&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4008&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 087.01</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.36&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4029&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 290.44</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.30&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4036&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 361.92</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.32&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4049&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 497.48</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.18&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4088&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 888.05</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.82&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4102&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 023.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.23&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4122&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 225.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.27&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4123&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 231.98</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.08&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4172&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 725.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.04&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4187&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 875.93</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.30&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4229&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 299.83</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4231&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 310.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 316.68</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.03&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4242&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 422.36</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.86&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4258&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 582.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4265&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 658.36</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.41&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4274&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 746.57</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.32&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4301&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 011.56</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.05&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4340&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 401.82</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4343&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 437.13</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4351&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 515.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.21&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4361&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 610.81</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.05&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4375&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 754.64</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.05&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4386&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 863.69</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4387&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 876.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4407&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 075.34</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.16&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4414&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 144.14</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4447&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 474.88</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.01&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4466&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 662.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.31&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4472&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 729.93</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.01&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4483&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 839.09</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4486&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 869.71</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.35&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4489&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 892.67</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4492&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 921.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.27&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4531&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 315.88</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.30&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4538&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 388.69</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4550&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 503.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.32&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4556&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 561.99</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.00&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4575&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 758.63</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.23&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4577&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 774.55</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.12&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4616&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 169.54</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4620&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 202.36</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.62&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4626&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 263.46</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.12&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4632&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 327.99</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.11&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4640&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 406.90</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4651&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 515.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4677&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 776.29</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.25&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4681&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 812.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4694&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1 or 2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 947.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4705&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 057.29</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.21&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4715&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 158.48</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.12&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>6<i>s</i>(<sup>6</sup>D)7<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;e&nbsp;<sup>7</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    47 198.73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.57&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    48 737.44&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.50&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    51 138.13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.71&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4720&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 200.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.31&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4747&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 477.05</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.14&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4753&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 539.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.99&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4761&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 614.64</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.12&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4782&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 827.68</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.11&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4784&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 845.24</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4785&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 853.53</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4793&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 934.89</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.21&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4795&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 957.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4813&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 131.92</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4830&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 302.56</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.14&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4833&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 338.08</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4840&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 409.32</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.98&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4852&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 525.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4854&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 546.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4875&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 756.10</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.16&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4877&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 773.49</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4887&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 874.93</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.28&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4899&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 999.56</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4905&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 053.60</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.89&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4911&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 112.10</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.10&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4913&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 138.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.23&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4920&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 202.03</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4946&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 461.19</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4948&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 481.99</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4953&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 534.28</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4961&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 614.84</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.10&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4968&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 680.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4987&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 872.57</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.93&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4990&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 903.54</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4994&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 947.06</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5000&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 007.36</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.42&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5015&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 153.57</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.16&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5027&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 274.91</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.12&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5029&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 293.56</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.18&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5031&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 311.71</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5032&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 329.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5037&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 377.19</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5045&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 453.80</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5050&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 503.53</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5053&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 530.59</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5058&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 589.89</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.06&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5063&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 630.26</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5067&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 670.83</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5090&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 902.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5093&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 937.24</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.18&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5098&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 989.77</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.12&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>6<i>s</i>(<sup>6</sup>D)7<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;e&nbsp;<sup>5</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    51 038.49&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.59&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    52 148.69&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.80&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    52 401.81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5104&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 042.76</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.25&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5116&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 166.38</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5121&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 217.74</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.66&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5122&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 228.63</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.27&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5131&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 311.24</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.90&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5132&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 329.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5154&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 545.88</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.50&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5165&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 655.94</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.09&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5175&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 758.65</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5204&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 042.60</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5213&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 138.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.08&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5216&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 162.03</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.21&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5233&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 337.78</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5237&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 374.93</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.14&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5249&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 490.56</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.11&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5256&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 563.81</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5260&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 604.13</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.99&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5267&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 677.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5271&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 715.84</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5280&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 801.90</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5293&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 937.60</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.24&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5307&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 073.24</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5313&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 131.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5333&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 338.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.39&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5342&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 424.05</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5344&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 447.29</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5345&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 454.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5357&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 572.09</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.10&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5359&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    53 594.54&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5364&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 647.07</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5375&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    53 758.43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5388&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 886.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5404&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 049.89</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.96&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5406&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 064.40</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5430&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 302.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.57&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5432&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;6&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 328.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.21&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5448&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 484.27</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.59&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5467&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    54 676.96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.82&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5475&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 753.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5480&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 800.46</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.46&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5484&nbsp;</td>
+
+ <td class="cnt">&nbsp;1 or 2&nbsp;</td>
+ <td class="fix">&nbsp;    54 847.38&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5486&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 867.69</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5538&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    55 388.87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.78&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5540&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    55 402.47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.40&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5541&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    55 419.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5609&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    56 092.46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5622&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;    56 222.41&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5672&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    56 729.16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5712&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 122.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.29&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5733&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    57 334.23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5782&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    57 826.90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5809&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    58 098.19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5868&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    58 688.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5876&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    58 768.76&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5890&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    58 905.20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5895&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    58 957.24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5907&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    59 074.97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5910&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    59 105.95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5914&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    59 142.16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5917&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    59 170.43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5922&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    59 229.84&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5928&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    59 282.85&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5955&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    59 556.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5958&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    59 582.97&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5960&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;    59 602.19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5975&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;    59 750.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;6064&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;    60 649.49&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+ <tr class="lmt"> <td class="lft">Os&nbsp;II&nbsp;(5<i>d</i><sup>6</sup>6<i>s</i>&nbsp;<sup>6</sup>D<sub>9/2</sub>)&nbsp;</td>
+ <td class="cnt">&nbsp;Limit&nbsp;</td>
+
+ <td class="cnt">&nbsp;---&nbsp;</td>
+ <td class="fix">&nbsp;    68 058.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;                 1.6&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Os I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=8105&comment_code=&amp;element=Os&amp;spectr_charge=1&amp;ref=8105&amp;type=E');return false">L8105</a>&nbsp;</td>
+</tr>
+
+<tr>
+   <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+</tr>
+</tbody>
+</table>
+
+<p style="color:black; font-family: helvetica,arial; font-weight:bold">If you did not find the data you need, please <a href="mailto:alexander.kramida@nist.gov?subject=Missing%20data%20in%20ASD&amp;body=Z=76%200%20levels">inform the ASD Team</a>.</p><table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+
+</body>
+</html>

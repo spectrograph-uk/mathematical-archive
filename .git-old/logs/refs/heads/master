@@ -1,0 +1,54 @@
+0000000000000000000000000000000000000000 7cbc132334110333aa34ef833b4053dcb6aa96f0 spectrograph-uk <john.atwell.moody@gmail.com> 1639431215 +0000	clone: from https://github.com/spectrograph-uk/backup
+7cbc132334110333aa34ef833b4053dcb6aa96f0 4cfc9730715d4cca1d7ca0d066be8d21b0bf0223 spectrograph-uk <john.atwell.moody@gmail.com> 1639432962 +0000	commit: add word to button
+4cfc9730715d4cca1d7ca0d066be8d21b0bf0223 f537d69a9f10c0be419141ced1ccbf8ac962dcd0 spectrograph-uk <john.atwell.moody@gmail.com> 1641743545 +0000	commit: added pdfs and videos used in links, cloud folder, updated spectrograph js and html files
+f537d69a9f10c0be419141ced1ccbf8ac962dcd0 83b8bfb6da2e53ce8777050bd53e2c57c124c5d6 spectrograph-uk <john.atwell.moody@gmail.com> 1642252424 +0000	commit: slight modification to links.html
+83b8bfb6da2e53ce8777050bd53e2c57c124c5d6 69b3990248d3f15cc52008c146a4c30b66ffcc78 spectrograph-uk <john.atwell.moody@gmail.com> 1647693826 +0000	commit: no change
+69b3990248d3f15cc52008c146a4c30b66ffcc78 6dc8c43443aa3a6410936c53de9ffbab1118b5a0 spectrograph-uk <john.atwell.moody@gmail.com> 1647714198 +0000	commit: edited
+6dc8c43443aa3a6410936c53de9ffbab1118b5a0 10ad5ba53a0cf3d5dbba60b2b0850feb177945ae spectrograph-uk <john.atwell.moody@gmail.com> 1649977907 +0100	commit: Changed keys.js so enter key runs nextt2(aNumber) and changed help.
+10ad5ba53a0cf3d5dbba60b2b0850feb177945ae f51d29714495fe567935ba7021aeda493e82d706 spectrograph-uk <john.atwell.moody@gmail.com> 1650135938 +0100	commit: put special keyup events in three input elements on top of page
+f51d29714495fe567935ba7021aeda493e82d706 69b4ed7680ab1d5b9c7c05111894800faa2d6cab spectrograph-uk <john.atwell.moody@gmail.com> 1650136554 +0100	commit: fixed keys.js for the config entry
+69b4ed7680ab1d5b9c7c05111894800faa2d6cab 285bf6b41f8b4b1e764fcddf73fdb689499e8993 spectrograph-uk <john.atwell.moody@gmail.com> 1650136670 +0100	commit: fixed keys.js again for the config entry
+285bf6b41f8b4b1e764fcddf73fdb689499e8993 19e93cb2770a27f78274d67bab39167b95a8f41b spectrograph-uk <john.atwell.moody@gmail.com> 1650137218 +0100	revert: Reverting
+19e93cb2770a27f78274d67bab39167b95a8f41b aed4fb36218510edf40a981ff92524ec4726a557 spectrograph-uk <john.atwell.moody@gmail.com> 1650137243 +0100	revert: Revert "fixed keys.js for the config entry"
+aed4fb36218510edf40a981ff92524ec4726a557 0aee455276779334c96471189e2849a7059f86a6 spectrograph-uk <john.atwell.moody@gmail.com> 1650137252 +0100	revert: Revert "put special keyup events in three input elements on top of page"
+0aee455276779334c96471189e2849a7059f86a6 65a96a260bf0cdee7171fa61c2925d85dd7e1edd spectrograph-uk <john.atwell.moody@gmail.com> 1650286358 +0100	commit: did put a script at the end of index2 which defines different keyup for from config and stops propogation
+65a96a260bf0cdee7171fa61c2925d85dd7e1edd 33c897ddfed2fcca877a2e885435b1c7e0397549 spectrograph-uk <john.atwell.moody@gmail.com> 1650286598 +0100	commit: same change now for index.html
+33c897ddfed2fcca877a2e885435b1c7e0397549 fb0f8a4147983ea078923f719e6a3a3c32fd9ead spectrograph-uk <john.atwell.moody@gmail.com> 1650286877 +0100	commit: hopefully all restored
+fb0f8a4147983ea078923f719e6a3a3c32fd9ead 71478a98f0a11cf5d06b5ef596cfe87a6aa8b2c7 spectrograph-uk <john.atwell.moody@gmail.com> 1650372933 +0100	commit: made ionn text area not allowing 0
+71478a98f0a11cf5d06b5ef596cfe87a6aa8b2c7 e6420ca26ade493d91788b2f5ffa27ac849f029e spectrograph-uk <john.atwell.moody@gmail.com> 1650373123 +0100	commit: removed extra parens in keys.js
+e6420ca26ade493d91788b2f5ffa27ac849f029e f5594fa8f11bd40c0288be8d94e01be80f03e3af spectrograph-uk <john.atwell.moody@gmail.com> 1654681120 +0100	commit: changed first line of rr2 to add padding when resize
+f5594fa8f11bd40c0288be8d94e01be80f03e3af 0c70932b4b67221159130ed29372b6da6fbdbd8a spectrograph-uk <john.atwell.moody@gmail.com> 1654727032 +0100	commit: made blue div wider since wraps on some phones
+0c70932b4b67221159130ed29372b6da6fbdbd8a 99198e02265e5129daa290f5702def86e178bb25 spectrograph-uk <john.atwell.moody@gmail.com> 1655471516 +0100	commit: reverted keys not to do anything if code=13
+99198e02265e5129daa290f5702def86e178bb25 02bb52a7eb2ee6a55e0bd2c47ceaebb368bcdc0f spectrograph-uk <john.atwell.moody@gmail.com> 1655472028 +0100	commit: put keyup function for atomicNumber now that not in keys.js
+02bb52a7eb2ee6a55e0bd2c47ceaebb368bcdc0f f6502c06155e533100d79dcc5d1316e4da71f03f spectrograph-uk <john.atwell.moody@gmail.com> 1656075215 +0100	commit: corrected typo in riemann2.pdf and re-added links.html
+f6502c06155e533100d79dcc5d1316e4da71f03f 57587b0ea28d5968ff5ce63c0f0c1b5198e6aa4a spectrograph-uk <john.atwell.moody@gmail.com> 1667485085 +0000	commit: updated index2.html should match online version
+57587b0ea28d5968ff5ce63c0f0c1b5198e6aa4a c9634106d0f848c1b2e73bd8fe028b56ea01d005 spectrograph-uk <john.atwell.moody@gmail.com> 1667485441 +0000	pull ssh://moody@spectrograph.uk/home/moody/git.git: Merge made by the 'ort' strategy.
+c9634106d0f848c1b2e73bd8fe028b56ea01d005 0b994603f58d6d819f4efad8cc8a3d3e1fb9c1a9 spectrograph-uk <john.atwell.moody@gmail.com> 1667486072 +0000	commit: forgot to add index also
+0b994603f58d6d819f4efad8cc8a3d3e1fb9c1a9 0448c3a531b57bb2934f8261eb904fcc5cf1a88f spectrograph-uk <john.atwell.moody@gmail.com> 1667486254 +0000	commit: forgot to add index also
+0448c3a531b57bb2934f8261eb904fcc5cf1a88f 9cba1d719b99146ba1b0b8ddc6095cc1fb96c553 spectrograph-uk <john.atwell.moody@gmail.com> 1667513639 +0000	commit: widened progress bar to match div above
+9cba1d719b99146ba1b0b8ddc6095cc1fb96c553 163b5cba89ba3c1b408154aedc2385c1443742ea spectrograph-uk <john.atwell.moody@gmail.com> 1673740885 +0000	commit: added new stuff about Fermat theorem
+163b5cba89ba3c1b408154aedc2385c1443742ea bb1a40152a14829dcb7454ff65149c9f18d25908 spectrograph-uk <john.atwell.moody@gmail.com> 1680446047 +0100	commit: Added pr.pdf and added this to links.html
+bb1a40152a14829dcb7454ff65149c9f18d25908 7d59d324e17e59dcf7d870b4f814a87fcaa4539d spectrograph-uk <john.atwell.moody@gmail.com> 1685232831 +0100	commit: added pos-neg and mod forms with stacks stuff and transformer/chat stuff
+7d59d324e17e59dcf7d870b4f814a87fcaa4539d dfeda64b2d006f0ad6b8d5363256589d479fd673 spectrograph-uk <john.atwell.moody@gmail.com> 1693345520 +0100	commit: added index.php
+dfeda64b2d006f0ad6b8d5363256589d479fd673 731f852c8f2cf843e8607baf0289df6596f9e99e spectrograph-uk <john.atwell.moody@gmail.com> 1693345573 +0100	commit: also updated index and chat same way not to default to transcodeBeforeUpload=true
+731f852c8f2cf843e8607baf0289df6596f9e99e 8b0461f10a908a10864ed29b0d383b74eb9340dd spectrograph-uk <john.atwell.moody@gmail.com> 1693992723 +0100	commit: using wiley6.mp4 instead of fullscreen
+8b0461f10a908a10864ed29b0d383b74eb9340dd 589e823eebeebd4b270673077f29bc7e411289e0 spectrograph-uk <john.atwell.moody@gmail.com> 1696549750 +0100	commit: fixed urls in chemistry.pdf
+589e823eebeebd4b270673077f29bc7e411289e0 5bc47516d192ded7cc7633ad188e6cbd63a4cb5d spectrograph-uk <john.atwell.moody@gmail.com> 1700652476 +0000	commit: fixed a few typos in pr.pdf and made links.html more mobile compatible by changing body to actual width etc
+5bc47516d192ded7cc7633ad188e6cbd63a4cb5d 383965bd60870dda08914eb65cb512566d65bdc9 spectrograph-uk <john.atwell.moody@gmail.com> 1702290138 +0000	commit: changed modular_forms.pdf
+383965bd60870dda08914eb65cb512566d65bdc9 be9a62dfbafc9a175be0b19863ac450fa30497f1 spectrograph-uk <john.atwell.moody@gmail.com> 1703260242 +0000	commit: minor changes
+be9a62dfbafc9a175be0b19863ac450fa30497f1 b35df50c697c1bf8dd89c7579f2e5d90da4642f7 spectrograph-uk <john.atwell.moody@gmail.com> 1717162225 +0100	commit: updated elliptic,physics_II, easy, hilbert3, riemann2, links
+b35df50c697c1bf8dd89c7579f2e5d90da4642f7 78c5c0484b8aa27b551d8fed6c968421db6ee0e1 spectrograph-uk <john.atwell.moody@gmail.com> 1717226236 +0100	commit: fixed elliptic.pdf -- cyclic ordering must be oriented
+78c5c0484b8aa27b551d8fed6c968421db6ee0e1 75d7b003f287e0a3c0be96ff75355ff05b1e3021 spectrograph-uk <john.atwell.moody@gmail.com> 1719060451 +0100	commit: fixed typo in pr.pdf
+75d7b003f287e0a3c0be96ff75355ff05b1e3021 349b089728b1bb5d5559f21167ef8597fc39f54d spectrograph-uk <john.atwell.moody@gmail.com> 1734972072 +0000	commit: added thm, updated links, edited one line in chemistry.pdf
+349b089728b1bb5d5559f21167ef8597fc39f54d 533eff24a5cddc636980fd872e838592b72225a7 spectrograph-uk <john.atwell.moody@gmail.com> 1764236124 +0000	commit: updated links.html and some pdf files
+533eff24a5cddc636980fd872e838592b72225a7 377b5849b96e2ce5f6b8160c7e3e462caafd7c64 spectrograph-uk <john.atwell.moody@gmail.com> 1764238814 +0000	commit: added attention.pdf
+377b5849b96e2ce5f6b8160c7e3e462caafd7c64 2b3e369f17ac24cc78de2eb27f9f7326036dea0e spectrograph-uk <john.atwell.moody@gmail.com> 1766138605 +0000	commit: current changes in pdf files
+2b3e369f17ac24cc78de2eb27f9f7326036dea0e 4e25d098036fd913934e04ce4f5b8dfe63c2a2de spectrograph-uk <john.atwell.moody@gmail.com> 1766138910 +0000	commit: current changes in pdf files
+4e25d098036fd913934e04ce4f5b8dfe63c2a2de dd398bb12dfe9ac3ff4e25d00635e7f702e2e33c spectrograph-uk <john.atwell.moody@gmail.com> 1786895134 +0100	commit: updated links, added addiction
+dd398bb12dfe9ac3ff4e25d00635e7f702e2e33c 703e477dad828eef190e06181a70bccd202bf10d spectrograph-uk <john.atwell.moody@gmail.com> 1786914153 +0100	commit: changed index.html and index2.html to refer to the github version and took summary text out of links.html
+703e477dad828eef190e06181a70bccd202bf10d 10f23a0cf483adbaa9450232b451463d020905b9 spectrograph-uk <john.atwell.moody@gmail.com> 1787111213 +0100	commit: added ce.pdf
+10f23a0cf483adbaa9450232b451463d020905b9 45c938ec334162861759009d9107bee4918ce098 spectrograph-uk <john.atwell.moody@gmail.com> 1787112095 +0100	merge github/master: Merge made by the 'ort' strategy.
+45c938ec334162861759009d9107bee4918ce098 c2ae745b121e7195a84be7d566bf0e0cd7541275 spectrograph-uk <john.atwell.moody@gmail.com> 1787230841 +0100	commit: updated README.md
+c2ae745b121e7195a84be7d566bf0e0cd7541275 38b51b524d3f7a7f62902a1469ebb8174fbbebc0 spectrograph-uk <john.atwell.moody@gmail.com> 1787485748 +0100	commit: updated README.md again
+38b51b524d3f7a7f62902a1469ebb8174fbbebc0 78a704568bd5f5555e319ad5d8899f3f56f5f396 spectrograph-uk <john.atwell.moody@gmail.com> 1787523183 +0100	commit: removed lots of pdfs not actually referenced by links anymore
+78a704568bd5f5555e319ad5d8899f3f56f5f396 1f7e6627c4a609d95f72c4f2aa702f11151a3d44 spectrograph-uk <john.atwell.moody@gmail.com> 1787524377 +0100	commit: removed some more extraneous pdf

@@ -1,0 +1,2220 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>NIST ASD Levels Output</title>
+<link title="ASD 5.0" rel="start" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 4.0" rel="ASD 4" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 3.0" rel="ASD 3" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 2.0" rel="ASD 2" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 1.3" rel="ASD 1" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Yuri Ralchenko" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Alexander Kramida" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Joseph Reader" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Version History" rel="Version" href="https://physics.nist.gov/PhysRefData/ASD/Html/verhist.shtml" />
+<link title="NIST Main Page" rel="bookmark" href="https://www.nist.gov/" />
+<link title="NIST Physical Measurement Lab" rel="bookmark" href="https://physics.nist.gov/" />
+<link title="Physical Reference Data" rel="bookmark" href="https://pml.nist.gov/data " />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="https://physics.nist.gov/PhysRefData/ASD/Scripts/1.css" />
+<script async id="_fed_an_js_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NIST&amp;pua=UA-37115410-46&amp;yt=true&amp;exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c" type="text/javascript"></script>
+<script type="text/javascript">//<![CDATA[
+
+function setFocus() {
+  var de = document.getElementById("de");
+  var idsSp = document.getElementById("ids_sp");
+  var dom = document.domain;
+  var href = document.location.href;
+  if ( href.match(/^http:\/\/ekron\.nist\.gov\/ASD\/DataEntry\/.*/i) ) {
+    de.value = 1;
+  }
+  if ( dom.match(/^ekron\.nist\.gov$/i) ) {
+    idsSp.style.display="inline";
+  }
+  document.levels.spectrum.disabled = true;
+}
+function submit_update() {
+  var submitRetrieve = document.getElementById("submit_retrieve");
+  var spCrit = document.getElementById("spectrum_crit");
+  if ( (spCrit != null) && (submitRetrieve != null) ) {
+    var spPrev = spCrit.innerHTML;
+    spPrev = spPrev.toLowerCase().replace(/  /gm,"");
+    spPrev = spPrev.replace(/<b>/gm,"");
+    spPrev = spPrev.replace(/<\/b>/gm,"");
+    var sp = document.getElementById("spectrum").value;
+    sp = sp.toLowerCase().replace(/  /gm,"");
+    if ( sp != spPrev ) {
+      submitRetrieve.value = "Update Criteria";
+    } else {
+  		document.levels.spectrum.disabled = false;
+      submitRetrieve.value = "Retrieve";
+    }
+  }
+  return true;
+}
+
+//]]></script>
+<script src="/js/clickjack.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body bgcolor="white" >
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/balloon.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/setup.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/go.js"></script>
+<span>
+<a href="#start"><img src="/Images/dot_t.gif" width="1" height="1" style="border:0;margin-top:0;margin-bottom:0" alt="[skip navigation]" /></a>
+</span>
+<table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+<map name="NIST-PL" id="NIST-PL">
+  <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" alt="National Institute of Standards and Technology" title="National Institute of Standards and Technology"/>
+  <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory" title="NIST Physical Measurement Laboratory"/>
+</map>
+<a id="start"><!-- filler --></a>
+<script type="text/javascript">
+<!-- //
+var newwindow
+//var n
+function popdef(n){
+newwindow = window.open(n,"data1","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=600,height=450");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popbib(n){
+newwindow = window.open(n,"data2","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=800");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popded(n){
+//newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=640,height=250");
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=320");if (window.focus) {newwindow.focus()}
+return true;
+}
+function popdiag(n){
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=1000");if (window.focus) {newwindow.focus()}
+return true;
+}
+// -->
+</script>
+
+<table style="width:100%">
+  <tr>
+    <td style="color:#223388; font-size:150%; vertical-align:middle"><span style="color:black; font-weight:600">NIST Atomic Spectra Database Levels Data</span><p>
+      <sup></sup>Bi  II &nbsp;&nbsp;78 Levels Found<br />
+<b><font size="+1"><i>Z</i> = 83, Pb isoelectronic sequence</font></b><span style="font-size=300%">&nbsp;</span></p>
+    </td>
+    <td style="text-align:right; vertical-align:middle">
+<div class='ref'>
+<b>Example of how to reference these results:</b><br />
+
+Kramida,&nbsp;A., Ralchenko,&nbsp;Yu., Reader,&nbsp;J., and NIST ASD Team (2019).
+  <i>NIST Atomic Spectra Database</i> (ver.&nbsp;5.7.1),
+  [Online]. Available: <span style="color:#0000cc;">https://physics.nist.gov/asd</span>
+  [2019, December 25].
+  National Institute of Standards and Technology, Gaithersburg, MD.
+	DOI: <span style="color:#0000cc;">https://doi.org/10.18434/T4W30F</span>
+<br />
+<div style="text-align: right; font-size: x-small">
+<a href="javascript:void(0)" onclick="popdef('/cgi-bin/ASD/bibtex.pl?y=2019&amp;m=December&amp;d=25');return true" target="_top">BibTex Citation</a> (new window)
+</div>
+</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="color:#655665; font-family: helvetica,arial; font-size:80%"><b>
+Data on  Land&eacute; factors are not available for this ion in ASD
+<p/><span class="hnd">Some data for neutral and singly-charged ions are available in the <a href="/PhysRefData/Handbook/index.html" target="_new">Handbook of Basic Atomic Spectroscopic Data</a></span>
+</b></td>
+  </tr>
+</table>
+
+<P/>
+<table style="background-color:#004400">
+  <tr>
+    <td colspan="2" style="color: white; text-align:center">
+      &nbsp;&nbsp;Primary data source&nbsp;&nbsp;
+    </td>
+    <td style="color: white; text-align:center">
+      Query NIST Bibliographic Database for <b>Bi  II</b> (new window)
+    </td>
+  </tr>
+  <tr>
+<!--    <td style="text-align:center; background-color:#DDDDBB">-->
+    <td class='brt2'>
+      &nbsp;<a onmouseover="self.status='Bibliographic Reference for Bi II';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=9887&amp;comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;type=E');return false">Dolk&nbsp;et&nbsp;al.&nbsp;2002</a>, <a onmouseover="self.status='Bibliographic Reference for Bi II';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=6771&amp;comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;type=E');return false">Joshi&nbsp;and&nbsp;Mazzoni&nbsp;1986</a>, <a onmouseover="self.status='Bibliographic Reference for Bi II';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=3466&amp;comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;type=E');return false">Moore&nbsp;1958&nbsp;</a>&nbsp;
+    </td>
+    <td class='blf2'>
+      
+    </td>
+    <td class='bcn2'>
+      <A HREF="javascript:void(0)" ONCLICK="popbib('https://physics.nist.gov/cgi-bin/ASBib1/Elevbib/make_query.cgi?spectra=Bi%20II&amp;method=EL&amp;method=TE&amp;method=ND&amp;method=IP&amp;method=SF&amp;method=QF&order=1');return false"
+        ONMOUSEOVER="self.status='Bi  II: bibliography energy levels query';return true;"
+        ONMOUSEOUT="self.status=''; return true;" TARGET=_blank>Literature on Bi  II Energy Levels</A>
+    </td>
+  </tr>
+</table>
+  <br>
+<table style="background-color:#FFFEEE; border:=1" frame="box" rules="groups" CELLSPACING="0" CELLPADDING="1">
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup span="7">
+<colgroup>
+<tbody>
+<tr style="vertical-align:middle; background-color:#177A9C">
+<TH scope="col" style="text-align:left">&nbsp;Configuration&nbsp;</TH>
+<TH scope="col">&nbsp;Term&nbsp;</TH>
+<TH scope="col">&nbsp;<i>J</i>&nbsp;</TH>
+<TH scope="col">&nbsp;Level&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col">&nbsp;Uncertainty&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col" colspan="7" style="text-align:center; white-space:nowrap">&nbsp;Leading percentages&nbsp;</TH>
+<TH scope="col" style="text-align:left">&nbsp;Reference&nbsp;</TH>
+</tr>
+</tbody>
+<tbody>
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>3</sup>P&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;              0.000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.05&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;83&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;17&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>1</sup>S&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;         13 325.401&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.7&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         17 031.698&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;52&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;48&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>1</sup>D&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>1</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         33 938.718&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;52&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;48&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>P&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>1</sup>S&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;         44 173.768&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;82&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;17&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>P&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;         <i>69 133.891</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;         <i>69 598.475</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;98&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>5</sup>S&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         <i>76 148.712</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;55&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;18&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>P&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>6<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         <i>79 091.141</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;97&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;         <i>80 577.071</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;73&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;13&nbsp;
+ <td class="conf2">&nbsp;6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>6<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         <i>82 049.632</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;71&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;26&nbsp;
+ <td class="conf2">&nbsp;6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;
+ <td class="conf2">&nbsp;<sup>5</sup>S&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;         <i>82 257.251</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;94&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;         84 280.446&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;         87 078.777&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;98&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;         88 566.685&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         88 789.478&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;99&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         <i>88 771.443</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;99&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;         <i>89 885.675</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;84&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;6&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>3</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;         <i>94 442.227</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;44&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;22&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         <i>94 930.640</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;48&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;31&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;         <i>96 062.356</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;50&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;31&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>6<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;         <i>99 011.328</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;55&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;19&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;        <a class='bal' href="javascript:void(toggleBalloon('['))" onmouseover="showBalloon('[',event);self.status='Help';return true" onmouseout="hideBalloon('[',event);self.status='';return true">[</a><i>99 725</i><a class='bal' href="javascript:void(toggleBalloon(']'))" onmouseover="showBalloon(']',event);self.status='Help';return true" onmouseout="hideBalloon(']',event);self.status='';return true">]</a><a class='bal' href="javascript:void(toggleBalloon('+'))" onmouseover="showBalloon('+',event);self.status='Help';return true" onmouseout="hideBalloon('+',event);self.status='';return true">+x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;             <i>400</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>106 611.224</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;64&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;13&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>7<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        <i>108 009.057</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;41&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;36&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>7<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>6<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;        <i>100 182.446</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;72&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;18&nbsp;
+ <td class="conf2">&nbsp;6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>P&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>100 494.931</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;64&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;12&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        <i>102 331.668</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;38&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;34&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        <i>103 003.505</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;59&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;28&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>7<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>8<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>101 340.430</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;86&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;11&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;        <i>101 463.435</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;90&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;10&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        105 085.532&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;50&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;47&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>5<i>f</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        105 270.947&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;85&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;13&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>5<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        105 289.732&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;82&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;13&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>7<i>p</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;        105 728.060&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>5<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        105 451.045&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;95&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        106 449.487&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;51&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;41&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>7<i>p</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        <i>105 527.197</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;95&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>108 126.733</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;75&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;8&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>6<i>d</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>8<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;        107 976&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>P&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        108 280.653&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;86&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;13&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>5<i>f</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        108 406.284&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;76&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;14&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        109 905.987&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;69&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;22&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>8<i>p</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;        112 650.875&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;89&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;5&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>8<i>p</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>8<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        108 888.519&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;73&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;26&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>7<i>p</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        109 105.461&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;92&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        <i>109 158.128</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;34&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;31&nbsp;
+ <td class="conf2">&nbsp;6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>9<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>1</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;0&nbsp;</td>
+ <td class="fix">&nbsp;        <i>114 579.101</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;87&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;11&nbsp;
+ <td class="conf2">&nbsp;6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>P&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>114 613.372</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;76&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;9&nbsp;
+ <td class="conf2">&nbsp;6<i>s</i>6<i>p</i><sup>3</sup>&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>P&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>6<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        115 936.556&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>G&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        116 214.383&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;99&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>F&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>6<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        116 090.980&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;99&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>F&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;        116 140.866&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>F&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>8<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        <i>116 942.813</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;49&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;40&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        <i>117 224.556</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;96&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>5<i>g</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        <i>117 004</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>8<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>117 225</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              <i>14</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;91&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>9<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        <i>122 278.025</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;89&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>122 669</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              <i>15</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;83&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>8<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        125 133.866&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;72&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;16&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>8<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;        125 249.299&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;88&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;12&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>5<i>f</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>5<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        125 385.746&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;82&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;8&nbsp;
+ <td class="conf2">&nbsp;6<i>p</i>8<i>f</i>&nbsp;
+ <td class="conf2">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        126 299.205&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;91&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;        126 653.813&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;81&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;16&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        127 062.615&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;98&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>5<i>f</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>7</sup>/<sub>2</sub>)&nbsp;</td>
+
+ <td class="cnt">&nbsp;4&nbsp;</td>
+ <td class="fix">&nbsp;        125 536.550&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;72&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;18&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;5&nbsp;</td>
+ <td class="fix">&nbsp;        125 946.915<a class='bal' href="javascript:void(toggleBalloon('+'))" onmouseover="showBalloon('+',event);self.status='Help';return true" onmouseout="hideBalloon('+',event);self.status='';return true">+x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.007&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;100&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        126 107.642&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;84&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;9&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        127 184.243&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               0.020&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;97&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>10<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;2&nbsp;</td>
+ <td class="fix">&nbsp;        <i>125 612.129</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;90&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>125 786</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              <i>16</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;96&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        <i>126 949.444</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;72&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;26&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>11<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>127 902</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              <i>16</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;94&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>7<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>5</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;3&nbsp;</td>
+ <td class="fix">&nbsp;        <i>128 544.088</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;               <i>0.020</i>&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;71&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;26&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;(<sup>3</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=9887&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=9887&amp;type=E');return false">L9887</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>12<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>129 383</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              <i>17</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;79&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>13<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>130 369</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              <i>17</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;95&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">6<i>p</i>14<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;(<sup>1</sup>/<sub>2</sub>,<sup>3</sup>/<sub>2</sub>)&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;1&nbsp;</td>
+ <td class="fix">&nbsp;        <i>131 117</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              <i>17</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;97&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;or&nbsp;&nbsp;</td>
+ <td class="perc2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;&nbsp;
+ <td class="conf2">&nbsp;<sup>3</sup>D&deg;&nbsp;
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+ <tr class="lmt"> <td class="lft">Bi&nbsp;III&nbsp;(6<i>p</i>&nbsp;<sup>2</sup>P&deg;<sub>1/2</sub>)&nbsp;</td>
+ <td class="cnt">&nbsp;Limit&nbsp;</td>
+
+ <td class="cnt">&nbsp;---&nbsp;</td>
+ <td class="fix">&nbsp;        134 720&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;              30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="perc">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="conf1">&nbsp;&nbsp;</td>
+ <td class="rem">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Bi II'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=6771&comment_code=&amp;element=Bi&amp;spectr_charge=2&amp;ref=6771&amp;type=E');return false">L6771</a>&nbsp;</td>
+</tr>
+
+<tr>
+   <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+</tr>
+</tbody>
+</table>
+
+<p style="color:black; font-family: helvetica,arial; font-weight:bold">If you did not find the data you need, please <a href="mailto:alexander.kramida@nist.gov?subject=Missing%20data%20in%20ASD&amp;body=Z=83%201%20levels">inform the ASD Team</a>.</p><table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+
+</body>
+</html>

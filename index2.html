@@ -1,0 +1,821 @@
+<!DOCTYPE HTML>
+<html><head>
+
+<!-- base href="https://spectrograph-uk.github.io/mathematical-archive/"></base -->
+
+
+<meta charset="UTF-8"><title>Universe Explorer</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<style>
+td{white-space:nowrap;text-align:left;vertical-align:center}
+
+</style>
+<script type="text/javascript" src="polyalg.js"></script>
+<script type="text/javascript" src="orbitals.js"></script>
+<script type="text/javascript" src="NISTLink_for_external_comparison.js"></script>
+<script type="text/javascript" src="color.js"></script>
+<script type="text/javascript" src="showcolors2.js"></script>
+<script type="text/javascript" src="sgraph.js"></script>
+<script type="text/javascript" src="realspect.js"></script>
+<script type="text/javascript" src="zoompan.js"></script>
+<script type="text/javascript" src="keys.js"></script>
+<script type="text/javascript" src="recalculate.js"></script>
+<script type="text/javascript" src="showlevels.js"></script>
+<script type="text/javascript" src="arraygraph.js"></script>
+<script type="text/javascript">
+
+/* 
+
+Note:  Most of the functions have been moved into a webworker script
+
+        webWorker.js
+
+so if you are reading this source to understand the website, that might be the place to start. The webWorker does the electromagnetic wave equations. Note that the second W is a capital letter.
+
+The webWorker script also imports (in addition to what I call polyalg.js for polynomial algebra and intkernel.js for integer kernels, and sparse.js for sparse algebra), two external scripts, these are
+
+        numeric.js
+
+written by Sebastian Loisel. This is used when we need to calculate eigenvalues of a matrix in rare cases of term symbols of multiplicity 
+larger than one, and also for the fine structure.
+
+webWorker.js t also imports 
+ 
+        color.js 
+
+which uses the algorithm of Dan Bruton to simulate a pure frequency in the vislble part of the spectrograph display by a mixture of R,G,B colors.
+
+The functions here on this page below are mainly the ones which interact with the user and call the webWorker script.
+
+*/
+
+
+function loadWorkerAsScript(){
+var scr1=document.createElement("script")
+scr1.src="webWorker.js"
+var scr2=document.createElement("script")
+scr2.src="numeric.js"
+var scr3=document.createElement("script")
+scr3.src="polyalg.js"
+var scr4=document.createElement("script")
+scr4.src="intkernel.js"
+var scr5=document.createElement("script")
+scr5.src="inde.js"
+var scr6=document.createElement("script")
+scr6.src="sparse.js"
+
+document.head.appendChild(scr1)
+document.head.appendChild(scr2)
+document.head.appendChild(scr3)
+document.head.appendChild(scr4)
+document.head.appendChild(scr5)
+document.head.appendChild(scr6)
+
+console.log("Scripts have been loaded.\n Note: before calling any Casimir with a new configuration you will have to re-clear the raising"
++"and lowering memoization by typing \"compareSmemoized=[];compareLmemoized=[]\"")
+
+
+
+}
+
+var waiting=false
+var emult=1,fmult=1,pmult=1
+
+var aNumber=1,ionn=1,econfig
+var lightspeed=29979245800
+
+
+
+var ions=["I","II","III","IV","V","VI","VII","XIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII"]
+for(var i=18;i<200;i++){ions.push(i)}
+
+var recalc=false
+var resultt=[]
+
+
+
+
+
+var stE
+function doConfig(config,ion, startingE){document.getElementById("nc").onclick=""
+stE=startingE
+if(!document.getElementById("dofine").checked)warnfine=true
+document.body.style.background="#FFFEF5"
+if(typeof(config)=="undefined"){
+while(document.getElementById("gif").firstChild)
+document.getElementById("gif").removeChild(document.getElementById("gif").firstChild)
+waiting=false
+return}
+document.getElementById("gif").innerHTML="<img src=\"spinner.gif\" style=\"width:30px\">  "
+waiting=true
+var configs=config.split(/[\;\,\ \n\r]+/)
+for(var ij=0;ij<configs.length;ij++){
+config=configs[ij]
+if(!config.match(/[a-z0-9]/))break
+document.getElementById("terms").innerHTML=""
+var K=term2array(config)
+var k=0
+for(var i=0;i<K[0].length;i++){k=k+K[0][i]}
+document.getElementById("atomicNumber").value=k
+aNumber=k
+if(document.getElementById("usepmults").checked)
+{pmult=pmults[aNumber]
+document.getElementById("pm").innerHTML=pmult}
+var kp=(k+ion-1)*(k+ion-1)/k  // k times the square of protons/electrons
+var fmultForWorker=fmult
+if(otherfinecorrect.checked)fmultForWorker=fmult*Math.PI/2*kp*1/pmult
+
+
+
+worker.postMessage(
+"docalc="+document.getElementById("docalc").checked
++";domults="+document.getElementById("domults").checked
++";dofine="+document.getElementById("dofine").checked
++";fineCorrect="
++finecorrect.checked.toString()
++";warnmults="
++warnmults
++";aNumber="
++aNumber.toString()
++";emult="
++emult.toString()
++";pmult="
++pmult.toString()
++";fmult="
++fmultForWorker.toString()
++";ionn="
++ionn.toString()
++";w=showEnergies("+JSON.stringify(K)
++","
++kp
++")"
+)
+}
+
+//var w=showEnergies(K,kp)
+}
+
+
+var warnmults=false
+var warnfine=false
+var warnoverflow=false
+var warntoofewforcorrect=false
+
+
+// clear the display etc
+
+function clearr(){
+document.getElementById("progressbar").style.width="0px"
+warnmults=false // needed for web worker version
+scaleWidth=1
+scaleHeight=1
+panLeft=0
+panTop=0
+scaleWidthSpeed=0
+panLeftSpeed=0
+if(document.getElementById("autocorrect").checked){emult=1}//later put pmult=1;fmult=1
+clearLn()
+showingColors=false
+document.getElementById("colorButton").value="visible colors"
+document.body.style.background="#FFFEF5"
+document.getElementById("colorButton").onclick=showColors
+warnmults=false
+warnfine=false
+warnoverflow=false
+warntoofewforcorrect=false
+col2=0
+col="red"
+doingOne=false
+cnt=0 
+
+isave=-1
+
+
+resultt=[]
+cnt=0
+document.getElementById("terms").innerHTML=""
+}
+
+
+
+// Convert hertz to another unit
+
+var metric=["Hz","KHz","MHz","GHz","THz","PHz","000PHz"]
+function lightUnits(x){
+if(x>0)return ""
+var size=Math.log(-x)/Math.log(10)
+var index=Math.floor(size/3)-1
+if(index<0)index=0
+return (-x).toString().substring(0,(-x).toString().length-3*index-3)
++" "
++(-x).toString().substring((-x).toString().length-3*index-3,(-x).toString().length-3*index)
++" "+metric[index]}
+
+
+
+//This tries to repair the notation for an electron configuration if it is just an abbreviation
+
+function repairterm(x){
+
+var y=x
+  x=x.replace(/([a-z])([0-9][a-z])/g,"$1"+"1"+"$2")
+.replace(/([a-z])($)/g,"$1"+1)
+while(x.length>y.length)
+{y=x
+x=x.replace(/([a-z])([0-9][a-z])/g,"$1"+"1"+"$2")
+.replace(/([a-z])($)/g,"$1"+1)
+}
+
+return x
+}
+
+
+
+
+function sort(startingEnergy){
+if(typeof(startingEnergy)=="undefined"&&resultt.length>0)startingEnergy=pmult*resultt[0][11]+emult*resultt[0][10]
+if(typeof(startingEnergy)=="undefined"&&resultt.length==0)startingEnergy=0
+document.getElementById("terms").innerHTML=""
+//resultt.sort(function(a,b){return a[1]-b[1]})
+
+showLevels(startingEnergy)
+
+
+}
+
+
+//This is not really used, but if we ever go into the database,
+// this figures out what implicit initial string of an electron
+//configuration is deleted in that abbreviated notation.
+
+function implicitTerms(i){
+
+var x=ground(i)
+var result=0
+for(var j=0;j<x[0].length-2;j++){result+=x[0][j]}
+return term(ground(result)).replace(/([\>\<\/])|(sup)/g,"")
+}
+
+function get(i,j){if(j>=data[i].length)return ""
+if(data[i][j][0].match(/[I\?]/))return ""
+var c=""
+if(data[i][j][0].match(/[spdfghi]/)){
+if(i==12&&data[i][j][0].match(/^3s/))c="2p6"
+return implicitTerms(i)+c+data[i][j][0].replace(/\([^\)]+\)/g,"")
+} 
+else return ""
+
+}
+
+
+var cnt=0
+var isave=-1
+
+
+// This calls doConfig with a new count each time it is called
+
+function nextt(i){document.getElementById("nc").onclick=""
+document.getElementById("gif").innerHTML="  <img src=\"spinner.gif\" style=\"width:30px\">  "
+waiting=true
+
+//setTimeout(nextt2,40,i)
+setTimeout(function(){nextt2(i)},40)// for ie
+}
+
+
+
+
+function nextt2(i){
+if(aNumber<4)document.getElementById("dofine").checked=true;document.getElementById("domults").checked=true
+showingColors=false
+document.getElementById("colorButton").value="visible colors"
+document.getElementById("colorButton").onclick=showColors
+if(i!=isave)cnt=0
+isave=i
+var bas=0
+if(resultt.length>0)bas=pmult*resultt[0][11]+emult*resultt[0][10]
+var aaa=orbitals[i].split(";")
+if(cnt>=aaa.length){
+while(document.getElementById("gif").firstChild)
+document.getElementById("gif").removeChild(document.getElementById("gif").firstChild)
+waiting=false
+return}
+econfig=repairterm(aaa[cnt])
+document.getElementById("electronConfiguration").value=econfig
+doConfig(aaa[cnt], ionn,bas)
+cnt++
+
+}
+
+
+Array.prototype.equals = function (array) {
+    // if the other array is a fals y value, return
+    if (!array)
+        return false;
+
+    // compare lengths - can save a lot of time
+    if (this.length != array.length)
+        return false;
+
+    for (var i = 0, l=this.length; i < l; i++) {
+        // Check if we have nested arrays
+        if (this[i] instanceof Array && array[i] instanceof Array) {
+            // recurse into the nested arrays
+            if (!this[i].equals(array[i]))
+                return false;
+        }
+        else if (this[i] != array[i]) {
+            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+var terms=["s","p","d","f","g","h","i","k","l","m"]
+var pmults=[1,1,1,1,2,2,1.6,1.7,1.5,.45,1.4,.4,1.2,.6,1,1,1,.6,1.2,1,1,.5,1,.917,1,1,1,1,1,1,1,1,1,1,1,1
+,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+
+//This converts a string representing an electron configuration to an array representing the same thing
+
+
+
+function term2array(config){
+config=repairterm(config)
+info=[]
+var splitpt=config.substring(2,config.length).search(/[0-9][spdfghijkl]/)+2
+var wt=config.substring(0, splitpt).search(/[spdfghijkl]/)
+var ww=config.charAt(wt) // will be s,p,d,f.... if following string is 2 digit number
+var tt=terms.indexOf(ww)
+var os=2*(2*tt+1) // size of that orbital or -2
+if(os>0&&os<parseInt(config.substring(wt+1,splitpt))) splitpt-- //must refer to a 1 digit number then
+while(splitpt>1){
+info.push(config.substring(0,splitpt))
+config=config.substring(splitpt,config.length)
+splitpt=config.substring(2,config.length).search(/[0-9][spdfghijkl]/)+2
+var wt=config.substring(0, splitpt).search(/[spdfghijkl]/)
+var ww=config.charAt(wt) // will be s,p,d,f.... if following string is 2 digit number
+var tt=terms.indexOf(ww)
+var os=2*(2*tt+1) // size of that orbital or -2
+if(os>0&&os<parseInt(config.substring(wt+1,splitpt))) splitpt-- //must refer to a 1 digit number then
+}
+info.push(config)
+
+
+
+var n=[],l=[],a=[]
+for(var i=0;i<info.length;i++){
+var pt=info[i].search(/[spdfghijkl]/)
+n.push(parseInt(info[i].substring(0,pt)))
+var error=true
+j=terms.indexOf(info[i].charAt(pt))
+if(j>-1){error=false;l.push(j)}else{error=true}
+if(error){alert("error: "+config);return}
+a.push(parseInt(info[i].substring(pt+1,info[i].length)))
+}
+if(l.length!=n.length||n.length!=a.length){alert("error");return}
+
+
+
+var K=[a,n,l]
+return K
+
+}
+
+
+var firstPass=true
+
+var col2=0
+var col="white"
+var nostop=true
+var doingOne=false
+
+
+function changecolor(){if(col=="red"){col="white"}else{col="red"}
+
+if(aNumber>0&&cnt>=orbitals[aNumber].split(";").length&&firstPass&&!waiting){warntoofewforcorrect=false;emult=getRW()} //  ran out of configs, just use what is there 
+if(warntoofewforcorrect){col2=1;document.getElementById("externalbutton").style.color="#AAAAAA" }
+else{if(!firstPass)document.getElementById("externalbutton").style.color="#000000"
+
+if(!waiting&&col2==1&&!firstPass)
+{getNIST(aNumber-0+ionn-1,ionn)
+
+document.getElementById("terms").scrollTop=0}
+
+
+
+if(firstPass&&col2==1){
+if(nostop&&!doingOne){setTimeout(
+"firstPass=false;document.getElementById('dofine').checked=true;document.getElementById('domults').checked=true;document.getElementById('finecorrect').checked=true;fmult=emult/pmult;var emultsave=emult;clearr();emult=emultsave;nextt2(aNumber)"
+,250)}
+}
+if(!waiting){
+col2=0
+}
+}
+if(col=="red"&&warnmults)document.body.style.background="#FFDDDD"
+if(col=="white"){if(!showingColors){document.body.style.background="#FFFEF5"}
+else{document.body.style.background="black"}}
+
+if(col=="white"&&warntoofewforcorrect&&!waiting&&!doingOne){
+document.getElementById("nc").style.background="#FF1111"
+if(nostop)nextt2(aNumber)
+}
+if(col=="red")document.getElementById("nc").style.background=""
+}
+
+setInterval(changecolor,200)
+
+
+var worker
+function rr(){
+worker=new Worker("webWorker.js")
+
+worker.onmessage=function(e){
+if(e.data.match(/progress/)){progress(e.data);return}
+eval(e.data)
+for(var uu=0;uu<w.length;uu++){
+resultt.push(w[uu])
+resultt.sort(function(a,b){return a[1]-b[1]})
+}
+
+if(document.getElementById("autocorrect").checked&&aNumber>3&&firstPass){
+emult=100;sort();
+emult=getRW(Math.floor(resultt.length/3),Infinity);sort();sort() // use second diffs from last 2/3 of data, make sure still nice if only last 1/3 had been used
+if(emult==1||getRW(Math.floor(2*resultt.length/3),Infinity)==1){
+warntoofewforcorrect=true
+document.getElementById("terms").scrollTop=document.getElementById("terms").scrollHeight
+}else{warntoofewforcorrect=false
+
+}
+
+}
+
+if(!firstPass&&resultt.length<20)warntoofewforcorrect=true
+if(!firstPass&&resultt.length>=20)warntoofewforcorrect=false
+sort();sort()
+while(document.getElementById("gif").firstChild)
+document.getElementById("gif").removeChild(document.getElementById("gif").firstChild)
+waiting=false
+if(warnmults)document.getElementById("terms").scrollTop=document.getElementById("terms").scrollHeight
+if(!firstPass||aNumber<4)graphColors()
+document.getElementById("nc").onclick=new Function("nextt(aNumber)")
+document.getElementById("progressbar").style.width="0px"
+
+
+}
+
+
+graphColors()
+rr2()
+tim()
+var dofine=document.getElementById("dofine")
+var autocorrect=document.getElementById("autocorrect")
+var domults=document.getElementById("domults")
+var usepmults=document.getElementById("usepmults")
+var otherfinecorrect=document.getElementById("otherfinecorrect")
+var finecorrect=document.getElementById("finecorrect") // not same as fineCorrect
+
+
+eval(unescape(location.search).replace(/\?/,"").replace(/\&/g,";")  )
+if(dofine.checked==true)domults.checked=true
+}
+
+
+
+function rr2(){
+document.body.style.paddingLeft=((window.innerWidth-1400)/2).toString()+"px"
+
+document.getElementById("blockingDiv").style.left=(document.getElementById("helpButton").offsetLeft+document.getElementById("helpButton").offsetWidth).toString()+"px"
+document.getElementById("blockingDiv").style.height=document.getElementById("helpButton").offsetHeight.toString()+"px"
+document.getElementById("blockingDiv").style.width=(document.getElementById("gif").offsetLeft-document.getElementById("blockingDiv").offsetLeft).toString()+"px"
+
+graphColors()
+document.getElementById("terms").style.height=(window.innerHeight-180).toString()+"px"
+document.getElementById("terms").style.width=(window.innerWidth-40-document.getElementById("terms").offsetLeft).toString()+"px"
+if(window.innerWidth<800)document.getElementById("terms").style.width="760px" //for mobile devices
+}
+
+window.onresize=rr2
+
+
+function progress(x){
+var y=x.replace(/^.*\=/g,"")
+document.getElementById("progressbar").style.width=(y*1350).toString()+"px"
+
+
+}
+
+function help(){
+if(showingColors)showLevels(stE)
+while(document.getElementById("terms").firstChild)
+document.getElementById("terms").removeChild(document.getElementById("terms").firstChild)
+document.getElementById("terms").appendChild(document.getElementById("helpdiv").getElementsByTagName("div")[0].cloneNode(true))}
+
+console.log("\nNotice: if you want to access functions from the worker and auxiliary scripts, type \"loadWorkerAsScript()\" first.")
+</script>
+
+
+</head>
+<body style="width:100%;height:100%;overflow:hidden;background:#FFFEF8" onload="rr()">
+<div id="sgraph" style="position:relative;left:120px;overflow:hidden"></div>
+
+
+<!--
+
+<div style="width:1400px;height:40px;background:#CCDDEE;padding-left:5px;border-style:solid;border-width:2px;border-top-color:#ddeeee;
+border-left-color:#ddeeee;border-bottom-color:#bbcccc;border-right-color:#bbcccc;position:relative;top:5px">
+
+<div style="float:left;display:inline"  ><div style="font-size:8px" > electrons</div>
+<input id="atomicNumber" 
+style="width:25px;display:inline-block" 
+onChange="clearr();aNumber=parseInt(this.value);if(document.getElementById('usepmults').checked)pmult=pmults[aNumber];document.getElementById('pm').innerHTML=pmult;firstPass=true;doingOne=false;fmult=1;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false" 
+value=0>
+</div>
+<div style="float:left;display:inline"  > <div style="font-size:8px" >&nbsp;&nbsp;ion</div>
+<input id="ionization" style="width:25px;display:inline-block" onChange="ionn=parseInt(this.value);if(ionn==0)ionn=1" value=1>
+</div>
+<div style="float:left;display:inline"  ><div style="font-size:8px" >elec configs (separate by semicolons)</div>
+<input id="electronConfiguration" style="display:inline-block;width:120px;direction:rtl" onChange="econfig=this.value">
+</div>
+
+
+
+<div style="float:left;display:inline;"  >
+&nbsp;&nbsp;
+
+</div>
+
+
+
+<input style="float:left;display:inline;" id="fromConfig" type="button" onClick="clearr();doingOne=true;document.getElementById('dofine').checked=true;document.getElementById('finecorrect').checked=true;doConfig(econfig,ionn,0)" value="from config">
+
+<input style="float:left;display:inline;" type="button" onClick="if(waiting){window.location.href='index2.html'};firstPass=true;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;fmult=1;clearr()" value="clear">
+<input style="float:left;display:inline;" 
+type="button" 
+onClick="document.getElementById('atomicNumber').value++;emult=1;aNumber=document.getElementById('atomicNumber').value;clearr();if(document.getElementById('usepmults').checked)pmult=pmults[aNumber];document.getElementById('pm').innerHTML=pmult;firstPass=true;doingOne=false;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;fmult=1;nextt(aNumber)" 
+value="new electron&proton">
+<input style="float:left;display:inline;" type="button" onClick="ionn++;document.getElementById('ionization').value=ionn;clearr();document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;firstPass=true;doingOne=false;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;fmult=1;nextt(aNumber)" value="new proton">
+
+<input id="nc" style="float:left;display:inline;" type="button" onClick="fmult=1;nextt(aNumber)" value="next config">
+<input id="externalbutton" style="float:left;display:inline;" type="button" onClick="getNIST(aNumber-0+ionn-1,ionn);document.getElementById('terms').scrollTop=0" value="compare external">
+<input  style="float:left;display:inline;width:100px" type="button" id="colorButton" onClick="showColors()" value="visible colors">
+<input  style="float:left;display:inline;" type="button" id="helpButton" onClick="help()" value="help">
+
+<div style="position:absolute;z-index:100" id="blockingDiv"></div>
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:8px" ><tr><td style="padding:0px"  >
+<input type="checkbox" readonly id="docalc" checked onChange="if(!this.checked){document.getElementById('domults').checked=false;document.getElementById('dofine').checked=false}" ><tr style="padding:0px"   ><td style="padding:0px;font-size:9px"  >(do calc)</table>
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:3px"><tr style="padding:0px"  ><td style="padding:0px"  >
+<input type="checkbox" readonly checked id="domults"  onChange="if(this.checked){document.getElementById('docalc').checked=true}else{document.getElementById('dofine').checked=false}" ><tr style="padding:0px"  >
+<td style="padding:0px;font-size:9px"  >(do mults)</table>
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:3px"><tr style="padding:0px"  ><td style="padding:0px"  >
+<input type="checkbox" readonly  id="dofine" onChange="if(this.checked){document.getElementById('domults').checked=true;document.getElementById('docalc').checked=true}" ><tr style="padding:0px"  ><td style="padding:0px;font-size:9px"  >(do fine)</table>
+
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:3px"><tr style="padding:0px"  ><td style="padding:0px"  >
+<input type="checkbox" readonly id="autocorrect" checked onChange="if(!this.checked){emult=1;warntoofewforcorrect=false}"><tr style="padding:0px"  ><td style="padding:0px;font-size:9px"  >(coarse correct)</table>
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:3px"><tr style="padding:0px"  ><td style="padding:0px"  >
+<input type="checkbox" readonly  id="finecorrect"  onChange="clearr()"><tr style="padding:0px"  ><td style="padding:0px;font-size:9px"  >(fine correct)</table>
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:3px;display:none"><tr style="padding:0px"  ><td style="padding:0px"  >
+<input type="checkbox" id="otherfinecorrect"  onChange="clearr()"><tr style="padding:0px"  ><td style="padding:0px;font-size:9px"  >(other)</table>
+
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:3px">
+<tr    style="padding:0px">
+<td style="padding:0px">
+<input type="checkbox" checked id="usepmults" onChange="if(this.checked){pmult=pmults[aNumber];document.getElementById('pm').innerHTML=pmult}else{pmult=1;document.getElementById('pm').innerHTML=''}">
+  <td style="padding:0px">
+<div id="pm" style=";position:relative;left:0px;border:none;height:10px;font-size:8px;width:20px"></div>
+ <tr style="padding:0px"  ><td colspan="2" style="padding:0px;font-size:9px"  >(use stored coef)</table>
+
+
+<table style="float:left;display:inline;border-collapse:collapse;padding-left:3px"><tr    style="padding:0px"  ><td style="padding:0px"  >
+<input type="checkbox" checked id="showchars" onChange="sort()"><tr style="padding:0px"  ><td style="padding:0px;font-size:9px"  >(show chars)</table>
+
+
+
+
+<div style="float:left;display:inline" id="gif"></div>
+</div>
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+<div style="width:1280px;height:40px;background:#CCDDEE;padding-left:5px;border-style:solid;border-width:2px;border-top-color:#ddeeee;
+border-left-color:#ddeeee;border-bottom-color:#bbcccc;border-right-color:#bbcccc;position:relative;top:5px">
+
+  <div style="float:left;display:inline">
+    <div style="font-size:8px">electrons</div>
+    <input id="atomicNumber"
+      style="width:25px;display:inline-block"
+      onChange="clearr();aNumber=parseInt(this.value);if(document.getElementById('usepmults').checked)pmult=pmults[aNumber];document.getElementById('pm').innerHTML=pmult;firstPass=true;doingOne=false;fmult=1;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false"
+      value="0">
+  </div>
+
+  <div style="float:left;display:inline">
+    <div style="font-size:8px">&nbsp;&nbsp;ion</div>
+    <input id="ionization" style="width:25px;display:inline-block" onChange="ionn=parseInt(this.value);if(ionn==0)ionn=1" value="1">
+  </div>
+
+  <div style="float:left;display:inline">
+    <div style="font-size:8px">elec configs (separate by semicolons)</div>
+    <input id="electronConfiguration" style="display:inline-block;width:120px;direction:rtl" onChange="econfig=this.value">
+  </div>
+
+  <div style="float:left;display:inline;">&nbsp;&nbsp;</div>
+
+  <input style="float:left;display:inline;" id="fromConfig" type="button"
+    onClick="clearr();doingOne=true;document.getElementById('dofine').checked=true;document.getElementById('finecorrect').checked=true;doConfig(econfig,ionn,0)"
+    value="from config">
+
+  <input style="float:left;display:inline;" type="button"
+    onClick="if(waiting){window.location.href='index2.html'};firstPass=true;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;fmult=1;clearr()"
+    value="clear">
+
+  <input style="float:left;display:inline;"
+    type="button"
+    onClick="document.getElementById('atomicNumber').value++;emult=1;aNumber=document.getElementById('atomicNumber').value;clearr();if(document.getElementById('usepmults').checked)pmult=pmults[aNumber];document.getElementById('pm').innerHTML=pmult;firstPass=true;doingOne=false;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;fmult=1;nextt(aNumber)"
+    value="new electron&proton">
+
+  <input style="float:left;display:inline;" type="button"
+    onClick="ionn++;document.getElementById('ionization').value=ionn;clearr();document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;firstPass=true;doingOne=false;document.getElementById('dofine').checked=false;document.getElementById('finecorrect').checked=false;fmult=1;nextt(aNumber)"
+    value="new proton">
+
+  <input id="nc" style="float:left;display:inline;" type="button" onClick="fmult=1;nextt(aNumber)" value="next config">
+
+  <input id="externalbutton" style="float:left;display:inline;" type="button"
+    onClick="getNIST(aNumber-0+ionn-1,ionn);document.getElementById('terms').scrollTop=0" value="compare external">
+
+  <input style="float:left;display:inline;width:100px" type="button" id="colorButton" onClick="showColors()" value="visible colors">
+  <input style="float:left;display:inline;" type="button" id="helpButton" onClick="help()" value="help">
+
+  <div style="position:absolute;z-index:100" id="blockingDiv"></div>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:8px">
+    <tr><td style="padding:0px">
+      <input type="checkbox" readonly id="docalc" checked onChange="if(!this.checked){document.getElementById('domults').checked=false;document.getElementById('dofine').checked=false}">
+    </td></tr>
+    <tr style="padding:0px"><td style="padding:0px;font-size:9px">(do calc)</td></tr>
+  </table>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:3px">
+    <tr style="padding:0px"><td style="padding:0px">
+      <input type="checkbox" readonly checked id="domults" onChange="if(this.checked){document.getElementById('docalc').checked=true}else{document.getElementById('dofine').checked=false}">
+    </td></tr>
+    <tr style="padding:0px"><td style="padding:0px;font-size:9px">(do mults)</td></tr>
+  </table>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:3px">
+    <tr style="padding:0px"><td style="padding:0px">
+      <input type="checkbox" readonly id="dofine" onChange="if(this.checked){document.getElementById('domults').checked=true;document.getElementById('docalc').checked=true}">
+    </td></tr>
+    <tr style="padding:0px"><td style="padding:0px;font-size:9px">(do fine)</td></tr>
+  </table>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:3px">
+    <tr style="padding:0px"><td style="padding:0px">
+      <input type="checkbox" readonly id="autocorrect" checked onChange="if(!this.checked){emult=1;warntoofewforcorrect=false}">
+    </td></tr>
+    <tr style="padding:0px"><td style="padding:0px;font-size:9px">(coarse correct)</td></tr>
+  </table>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:3px">
+    <tr style="padding:0px"><td style="padding:0px">
+      <input type="checkbox" readonly id="finecorrect" onChange="clearr()">
+    </td></tr>
+    <tr style="padding:0px"><td style="padding:0px;font-size:9px">(fine correct)</td></tr>
+  </table>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:3px;display:none">
+    <tr style="padding:0px"><td style="padding:0px">
+      <input type="checkbox" id="otherfinecorrect" onChange="clearr()">
+    </td></tr>
+    <tr style="padding:0px"><td style="padding:0px;font-size:9px">(other)</td></tr>
+  </table>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:3px">
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <input type="checkbox" checked id="usepmults" onChange="if(this.checked){pmult=pmults[aNumber];document.getElementById('pm').innerHTML=pmult}else{pmult=1;document.getElementById('pm').innerHTML=''}">
+      </td>
+      <td style="padding:0px">
+        <div id="pm" style="position:relative;left:0px;border:none;height:10px;font-size:8px;width:20px"></div>
+      </td>
+    </tr>
+    <tr style="padding:0px">
+      <td colspan="2" style="padding:0px;font-size:9px">(use stored coef)</td>
+    </tr>
+  </table>
+
+  <table style="float:left;display:inline;border-collapse:collapse;padding-left:3px">
+    <tr style="padding:0px"><td style="padding:0px">
+      <input type="checkbox" checked id="showchars" onChange="sort()">
+    </td></tr>
+    <tr style="padding:0px"><td style="padding:0px;font-size:9px">(show chars)</td></tr>
+  </table>
+
+  <div style="float:left;display:inline" id="gif"></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="progressbar" 
+style="border-style:solid;border-top-color:#4444FF;border-bottom-color:#0000CC;border-top-width:4px;border-bottom-width:12px;border-right-width:0px;border-left-width:0px;background:blue;line-height:1px;height:20px;width:0px;position:absolute;top:250px"></div>
+
+
+
+<div id="terms" style="clear:both;font-size:20px;overflow:auto;white-space:nowrap">
+
+
+<br><br><br><br><br><div style="color:#BBBBBB;padding:30px;white-space:normal">
+(Note: this is the new version of the spectrograph with less user control, here is a link to the original version
+<br><br><a style="color:#BBBBBB" href="index.html?old=true">index.html?old=true</a>)
+<br><br><br> The only functional difference between the versions is that the old version shows more
+forbidden transitions when the 'visible colors' button is pressed. If 'old=true' is replaced by 'allowForbidden=true'
+then all forbidden transitions are shown (including even-even and odd-odd transitions such as are seen in 
+the Northern lights).
+
+</div>
+
+</div>
+<div id="helpdiv" style="display:none">
+<div style="position:relative;padding-left:40px;padding-top:10px;font-size:16px;width:1000px;height:980px;white-space:normal">
+<br>
+<br>
+This javascript here makes the visible colours of all atoms and monatomic ions using the wave equation. You'll have to zoom in with the arrow keys to see the fine structure. For the old version change the url to end /index.html?old=true. Also any javascript code appended to the url will be executed. This version is meant to be more user friendly -- the checkboxes are un-checked and checked automatically (if you want to control them, use the old version), and also in both versions
+we've fixed the fact that assinging term symbols to levels and permuting levels don't commute. The easiest way to use it is to type in the number of electrons in the 
+upper left box, 
+then press 'next config' just once (or press enter), and when it is finished, you can press it more times if you want more
+levels. The arrow keys are for looking more closely at the spectrum, and the button 'show colors' shows which
+difference corresponds to which spectral line. You should enable popups when they try to appear (these are from NIST to compare with what is found in nature).
+
+<br><br> Here is a video showing the javascript react while the perturbation coefficient, which multiplies the electrostatic multipole series, changes for Beryllium changing from 0 to 1; the green
+are actual which get permuted at the end <a href="quantumvideo.mp4">fullscreen.html?file=quantumvideo.mp4</a>.
+If you check 'use stored coef' it will use a stored number for this perturbation coefficient called pmult, usually 1 or 1.5. A number called emult which is larger multiplies the proton charge (see next paragraph) and the parameter that is changed in the video affecting proportions can be considered as pmult/emult, still a number less than 1.
+<br><br>The coarse correction
+allows an attempt to correct for the problems the perturbation causes for the sums
+of reciprocal squares, by artificially increasing the proton charge by a multiple called emult, but only in how it
+affects levels with differing reciprocal sums of squares (not affecting any spectral frequency
+which was resolved into a difference if the two electron configurations are the same or even
+have the same reciprocal sum of squares). But now it also is allowed to affect the fine structure.
+Once  'next config' stops flashing, the value of emult will be such that 
+ if the levels are ordered lexicographically giving the reciprocal sum of squares
+effect precedence, then the second successive differences within each subsequence where the set of l quantum 
+numbers is constant, is minimized in the least squares sense.  
+
+<br><br> The 'visible colors' button shows details about visible spectral lines, but the display will likely be misleading if care is not taken.
+To make functions in the webworker available in a browser's developer console, type "loadWorkerAsScript()"  and this also loads
+things like a polynomial algebra script. Many of the functions are intuitively named, so casimirL("1s22p3") is the rotational casimir of the
+configuration 1s22p3, and times(A,B) is the product of matrices A,B. As a message in the developer's console explains, in order to access all the functions in the webworker you'll want to start by typing "loadWorkerAsScript()."
+
+<br><br><b>Examples using the <i>older</i> version:</b><br><br>
+Here are the electromagnetic equations making the red and green Northern Lights <a href="index.html?allowForbidden=true&amp;autocorrect.checked=false&amp;panLeft=160&amp;scaleWidth=4&amp;panLeftSpeed=-.002&amp;scaleWidthSpeed=.15&amp;dofine.checked=true&amp;nextt(8)">index.html?allowForbidden=true&amp;autocorrect.checked=false&amp;panLeft=160&amp;scaleWidth=4&amp;panLeftSpeed=-.002&amp;scaleWidthSpeed=.15&amp;dofine.checked=true&amp;nextt(8)</a> They represent transitions between even functions.<br><br>
+Here is the green Magnesium star triplet, and press 'next config' a few times after the calculation is definitely done, to see the yellow one.
+<a href="index.html?panLeft=160&amp;scaleWidth=4&panLeftSpeed=-.002&amp;scaleWidthSpeed=.15&amp;emult=4.5&amp;autocorrect.checked=false&amp;usepmults.checked=false&amp;dofine.checked=true&amp;finecorrect.checked=false&amp;nextt2(12)&amp;nextt2(12)&amp;nextt2(12)">index.html?panLeft=160&amp;scaleWidth=4&amp;panLeftSpeed=-.002&amp;scaleWidthSpeed=.15&amp;emult=4.5&amp;autocorrect.checked=false&amp;usepmults.checked=false&amp;dofine.checked=true&amp;finecorrect.checked=false&amp;nextt2(12)&amp;nextt2(12)&amp;nextt2(12)</a>. Both are reversed because the p orbital is more than half full.<br><br> Here is the familiar bright yellow Sodium doublet <a href="index.html?autocorrect.checked=false&amp;dofine.checked=true&amp;nextt2(11)&amp;nextt2(11)&amp;panLeft=280&amp;scaleWidth=20&amp;panLeftSpeed=-3&amp;scaleWidthSpeed=1">index.html?autocorrect.checked=false&amp;dofine.checked=true&amp;nextt2(11)&amp;nextt2(11)&amp;panLeft=280&amp;scaleWidth=20&amp;panLeftSpeed=-3&amp;scaleWidthSpeed=1</a>.<br><br> And the Carbon spectrum, perhaps reminiscent of fire, <a href="index.html?panLeft=280&amp;scaleWidth=20&amp;panLeftSpeed=1&amp;scaleWidthSpeed=.1&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)">index.html?panLeft=280&amp;scaleWidth=20&amp;panLeftSpeed=1&amp;scaleWidthSpeed=.1&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)&amp;nextt2(6)</a>.
+<br><br>
+The arrow keys are for looking closer, and 'compare external' compares with what is actually found in nature
+<br><br>Details of the calculation are in 'view source' or the developer console, or in even more detail in <a href="chemistry.pdf">chemistry.pdf</a>
+<br><br> Also <a href="links.html">here is a link to other mathematical papers</a>
+</div></div>
+
+
+
+</body>
+<script>
+document.getElementById("electronConfiguration").onkeyup=function(e){if(e.keyCode!=13)return
+e.stopPropagation();document.getElementById("fromConfig").onclick()}
+document.getElementById("atomicNumber").onkeyup=function(e){if(e.keyCode!=13)return
+e.stopPropagation();nextt2(aNumber)}
+</script>
+</html>

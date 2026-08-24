@@ -1,0 +1,401 @@
+/* CSS Document */
+
+
+/*
+
+COLORS
+
+green : 9acd66
+blue : 29419b
+pink: f9c6d6
+dark-pink:F39FC4
+orange: F16029
+
+gray:#BEBEBE
+*/
+/*
+
+#block-green-pink-top
+#block-pink-orange-top
+#block-yellow-green-top
+#block-blue-white-top
+
+#block-white-orange-top
+#block-white-green-top
+#block-white-pink-top
+#block-white-blue-top
+
+*/
+
+
+
+/* ### layout #### */
+
+
+
+body {
+
+background-attachment:fixed;
+text-align:center;
+margin:0px;
+padding: 0px;
+font-family: Verdana;
+font-size: 11px;
+line-height: 15px;
+
+background:#FFF;
+}
+
+
+#container {
+text-align: center;
+width:990px;
+margin:0 auto;
+padding:0px;
+z-index:10;
+position:relative;
+}
+
+#logo{
+height:160px;
+width:990px;
+text-align:center;
+z-index:15;
+position:relative;
+}
+#logo-back{
+position:fixed;
+top:0px;
+z-index:13;
+
+}
+
+
+#content{
+margin-top:10px;
+position:relative;
+z-index:12;
+}
+
+#center-stripes {
+background-color: #FFF;
+text-align: left;
+margin:0px auto;
+width: 470px;
+padding-top:20px;
+padding-bottom:30px;
+background-image:url(http://www.thecloudproject.co.uk/img/stripes.gif);
+background-repeat:repeat-y;
+
+}
+
+
+#center {
+text-align: left;
+margin:10px auto;
+width: 470px;
+
+}
+
+#center-white {
+text-align: left;
+margin:10px auto;
+width: 470px;
+background-color:white;
+padding:5px 0px 0px 2px;
+}
+
+#center-content {
+background-color:#FFF;
+margin:0px 10px;
+width:430px;
+padding-left:10px;
+z-index:26;
+}
+
+#blog-center-content {
+background-color:#ddd;
+margin:0px 10px;
+width:440px;
+padding-left:10px;
+z-index:26;
+}
+
+#blog-center-content p{
+width:430px;
+}
+
+
+#center-photos {
+background-color:#000;
+color:white;
+margin:0px 0px 0px 260px;
+left:30px;
+width:470px;
+padding:10px;
+text-align: left;
+
+}
+
+#colspacer{
+height:10px; 
+
+}
+
+
+#leftcol {
+float:left;
+text-align:left;
+width:253px;
+margin-top:-20px;
+z-index:14;
+}
+
+#rightcol {
+float:right;
+text-align:left;
+width:253px;
+margin-top:-20px;
+z-index:14;
+}
+
+#events-item{
+background-color:#f9c6d6;
+margin-left:10px;
+margin-right:20px;
+padding:0px 5px 5px 3px;
+color:#29419b;
+border-style:solid;
+border-width:3px 0px 0px 4px;
+border-color:#F39FC4;
+
+}
+
+#event-spacer{
+height:10px;
+
+}
+
+#footer{
+position:relative;
+z-index:8;
+}
+
+#footer img{
+padding-top:100px;
+height:88px;
+width:990px;
+position:relative;
+z-index:8;
+}
+
+
+#sitewidenav{
+
+position:fixed;
+z-index:16;
+
+}
+
+
+
+/* ### links ### */
+
+a {
+color:#29419b;
+text-decoration:underline;
+
+}
+
+a:hover{
+color:white;
+background-color:#29419b;
+}
+
+
+a:visited{
+color:#29419b;
+text-decoration:underline;
+
+
+}
+
+.nextlink{
+padding-left:150px;
+}
+
+a.imagelink:link{
+text-decoration:none;
+}
+
+a.imagelink:hover{
+text-decoration:none;
+background-color:white;
+}
+
+a.imagelink:visited{
+text-decoration:none;
+}
+
+#sitewidenav a{
+background-color:white;
+padding:2px 5px;
+margin-right:5px;
+text-decoration:none;
+}
+
+
+#sitewidenav a:hover{
+background-color:#BEBEBE;
+
+}
+
+a.green:link{
+color:#9acd66;
+text-decoration:none;
+}
+
+a.green:visited{
+color:#9acd66;
+text-decoration:none;
+}
+
+a.green:hover{
+background-color:#9acd66;
+color:white;
+}
+
+
+a.pink:link{
+color:#F39FC4;
+text-decoration:none;
+}
+
+a.pink:visited{
+color:#F39FC4;
+text-decoration:none;
+}
+
+a.pink:hover{
+background-color:#F39FC4;
+color:white;
+}
+
+a.orange:link{
+color:#F16029;
+text-decoration:none;
+}
+
+a.orange:visited{
+color:#F16029;
+text-decoration:none;
+}
+
+
+a.orange:hover{
+background-color:#F16029;
+color:white;
+}
+
+a.blue:link{
+color:#29419b;
+text-decoration:none;
+}
+
+a.blue:visited{
+color:#29419b;
+text-decoration:none;
+}
+
+a.blue:hover{
+background-color:#29419b;
+color:white;
+}
+
+
+/* ### TYPE  ### */
+
+
+.bold{
+font-weight:bold;
+}
+
+#bluetext{
+width:230px;
+color:#29419b;
+padding:0px 5px 15px 5px;
+}
+
+#orangetext{
+width:230px;
+color:#F16029;
+padding:0px 5px 15px 5px;
+}
+
+#greentext{
+width:230px;
+color:#9acd66;
+padding:0px 5px 15px 5px;
+}
+
+#pinktext{
+width:230px;
+color:#F39FC4;
+padding:0px 5px 15px 5px;
+}
+
+.grey{
+
+color:#666;
+
+}
+
+
+
+/* SUPERSIZED background */
+
+*{
+margin:0;
+padding:0;
+}
+
+img{
+border:none;
+}
+
+
+/*Supersize Plugin Styles*/
+
+#loading {
+position: absolute;
+top: 49.5%; 
+left: 49.5%;
+z-index: 3;
+width: 24px; 
+height: 24px;
+text-indent: -999em;
+background-image: url(images/progress.gif);
+}
+#supersize{
+
+position:fixed;
+overflow:hidden;/*Needed to eliminate scrollbars*/
+}
+#supersize img, #supersize a{
+height:100%;
+width:100%;
+top:0px;
+left:0px;
+position:absolute;
+z-index: 0;
+}
+#supersize .prevslide, #supersize .prevslide img{
+z-index: 1;
+}
+#supersize .activeslide, #supersize .activeslide img{
+z-index: 2;
+}
+
+
+
+

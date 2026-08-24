@@ -1,0 +1,73 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<script>
+
+
+function decode(x){
+x=x.replace(/^\?/,"")
+x=unescape(x)
+x=x.replace(/\&/g,"\";")
+x=x.replace(/\=/g,"\=\"")
+x=x+"\""
+x=x.replace(/(\")([0-9\.]+)(\")/g,"$2")
+return x
+
+}
+function fff(){
+var time=0
+var aspect=16/9
+var file=""
+eval(decode(location.search)) //set file and aspect
+
+
+window.onresize=new Function("window.location.reload()")
+  if(window.innerHeight){h=window.innerHeight};  
+if(document.body.clientHeight){h=document.body.clientHeight};
+  if(window.innerWidth){w=window.innerWidth};  
+if(document.body.clientWidth){w=document.body.clientWidth}
+//h=h*1.15
+var hideal=h
+var wideal=w
+if(hideal<1/aspect*wideal)hideal=1/aspect*wideal
+if(wideal<aspect*hideal)wideal=aspect*hideal
+hideal=Math.floor(hideal)
+wideal=Math.floor(wideal)
+
+
+
+//w=1064;h=600;
+ xxx="\<video "
++"style=\"object-fit:fill\""
++"width=\""
++wideal
++"\" height=\""
++hideal
++"\" autoplay=\"autoplay"
++"\" controls=\"controls"
++"\"\> " 
++"\<source src=\""
++file+
+"\" type=\"video/mp4\"\>";
++"\</video\>";
+
+
+
+
+console.log(xxx)
+
+document.body.innerHTML="\<center\>\<div id=\"thisdiv\" style=\"position:absolute;left:-20px;top:-20px\"\>"+xxx+"\</div\>\</center>"
+
+document.getElementById("thisdiv").style.left=Math.floor(w/2-wideal/2).toString()+"px"
+document.getElementById("thisdiv").style.top=Math.floor(h/2-hideal/2-.07*h).toString()+"px"
+
+}</script>
+</head>
+
+<body style="width:100%;overflow:hidden" onload="fff()">
+
+
+</body>
+</html>

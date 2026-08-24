@@ -1,0 +1,5153 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>NIST ASD Levels Output</title>
+<link title="ASD 5.0" rel="start" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 4.0" rel="ASD 4" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 3.0" rel="ASD 3" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 2.0" rel="ASD 2" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="ASD 1.3" rel="ASD 1" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Yuri Ralchenko" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Alexander Kramida" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Joseph Reader" rel="Author" href="https://physics.nist.gov/PhysRefData/ASD" />
+<link title="Version History" rel="Version" href="https://physics.nist.gov/PhysRefData/ASD/Html/verhist.shtml" />
+<link title="NIST Main Page" rel="bookmark" href="https://www.nist.gov/" />
+<link title="NIST Physical Measurement Lab" rel="bookmark" href="https://physics.nist.gov/" />
+<link title="Physical Reference Data" rel="bookmark" href="https://pml.nist.gov/data " />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="https://physics.nist.gov/PhysRefData/ASD/Scripts/1.css" />
+<script async id="_fed_an_js_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NIST&amp;pua=UA-37115410-46&amp;yt=true&amp;exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c" type="text/javascript"></script>
+<script type="text/javascript">//<![CDATA[
+
+function setFocus() {
+  var de = document.getElementById("de");
+  var idsSp = document.getElementById("ids_sp");
+  var dom = document.domain;
+  var href = document.location.href;
+  if ( href.match(/^http:\/\/ekron\.nist\.gov\/ASD\/DataEntry\/.*/i) ) {
+    de.value = 1;
+  }
+  if ( dom.match(/^ekron\.nist\.gov$/i) ) {
+    idsSp.style.display="inline";
+  }
+  document.levels.spectrum.disabled = true;
+}
+function submit_update() {
+  var submitRetrieve = document.getElementById("submit_retrieve");
+  var spCrit = document.getElementById("spectrum_crit");
+  if ( (spCrit != null) && (submitRetrieve != null) ) {
+    var spPrev = spCrit.innerHTML;
+    spPrev = spPrev.toLowerCase().replace(/  /gm,"");
+    spPrev = spPrev.replace(/<b>/gm,"");
+    spPrev = spPrev.replace(/<\/b>/gm,"");
+    var sp = document.getElementById("spectrum").value;
+    sp = sp.toLowerCase().replace(/  /gm,"");
+    if ( sp != spPrev ) {
+      submitRetrieve.value = "Update Criteria";
+    } else {
+  		document.levels.spectrum.disabled = false;
+      submitRetrieve.value = "Retrieve";
+    }
+  }
+  return true;
+}
+
+//]]></script>
+<script src="/js/clickjack.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body bgcolor="white" >
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/balloon.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/setup.js"></script>
+<script type="text/javascript" src="https://physics.nist.gov/PhysRefData/ASD/Scripts/go.js"></script>
+<span>
+<a href="#start"><img src="/Images/dot_t.gif" width="1" height="1" style="border:0;margin-top:0;margin-bottom:0" alt="[skip navigation]" /></a>
+</span>
+<table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+<map name="NIST-PL" id="NIST-PL">
+  <area shape="rect" coords="1,1,135,48" href="http://www.nist.gov" alt="National Institute of Standards and Technology" title="National Institute of Standards and Technology"/>
+  <area shape="rect" coords="1,50,135,67" href="/" alt="NIST Physical Measurement Laboratory" title="NIST Physical Measurement Laboratory"/>
+</map>
+<a id="start"><!-- filler --></a>
+<script type="text/javascript">
+<!-- //
+var newwindow
+//var n
+function popdef(n){
+newwindow = window.open(n,"data1","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=600,height=450");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popbib(n){
+newwindow = window.open(n,"data2","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=800");
+if (window.focus) {newwindow.focus()}
+return true;
+}
+function popded(n){
+//newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=640,height=250");
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=320");if (window.focus) {newwindow.focus()}
+return true;
+}
+function popdiag(n){
+newwindow = window.open(n,"data3","toolbar=no,location=no,alwaysRaised=yes,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=1000");if (window.focus) {newwindow.focus()}
+return true;
+}
+// -->
+</script>
+
+<table style="width:100%">
+  <tr>
+    <td style="color:#223388; font-size:150%; vertical-align:middle"><span style="color:black; font-weight:600">NIST Atomic Spectra Database Levels Data</span><p>
+      <sup></sup>Re  I &nbsp;&nbsp;291 Levels Found<br />
+<b><font size="+1"><i>Z</i> = 75, Re isoelectronic sequence</font></b><span style="font-size=300%">&nbsp;</span></p>
+    </td>
+    <td style="text-align:right; vertical-align:middle">
+<div class='ref'>
+<b>Example of how to reference these results:</b><br />
+
+Kramida,&nbsp;A., Ralchenko,&nbsp;Yu., Reader,&nbsp;J., and NIST ASD Team (2019).
+  <i>NIST Atomic Spectra Database</i> (ver.&nbsp;5.7.1),
+  [Online]. Available: <span style="color:#0000cc;">https://physics.nist.gov/asd</span>
+  [2019, December 25].
+  National Institute of Standards and Technology, Gaithersburg, MD.
+	DOI: <span style="color:#0000cc;">https://doi.org/10.18434/T4W30F</span>
+<br />
+<div style="text-align: right; font-size: x-small">
+<a href="javascript:void(0)" onclick="popdef('/cgi-bin/ASD/bibtex.pl?y=2019&amp;m=December&amp;d=25');return true" target="_top">BibTex Citation</a> (new window)
+</div>
+</div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="color:#655665; font-family: helvetica,arial; font-size:80%"><b>
+Data on  level compositions  are not available for this ion in ASD
+<p/><span class="hnd">Some data for neutral and singly-charged ions are available in the <a href="/PhysRefData/Handbook/index.html" target="_new">Handbook of Basic Atomic Spectroscopic Data</a></span>
+</b></td>
+  </tr>
+</table>
+
+<P/>
+<table style="background-color:#004400">
+  <tr>
+    <td colspan="2" style="color: white; text-align:center">
+      &nbsp;&nbsp;Primary data source&nbsp;&nbsp;
+    </td>
+    <td style="color: white; text-align:center">
+      Query NIST Bibliographic Database for <b>Re  I</b> (new window)
+    </td>
+  </tr>
+  <tr>
+<!--    <td style="text-align:center; background-color:#DDDDBB">-->
+    <td class='brt2'>
+      &nbsp;<a onmouseover="self.status='Bibliographic Reference for Re I';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=3466&amp;comment_code=&amp;element=Re&amp;spectr_charge=1&amp;type=E');return false">Moore 1958</a>&nbsp;
+    </td>
+    <td class='blf2'>
+      &nbsp;&nbsp;&nbsp;The ionization limit is from <a onmouseover="self.status='Bibliographic Reference for Re I';return true;" onmouseout="self.status='';return true;" target="_blank" href="javascript:void(0)" onclick="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&amp;db_id=11604&amp;comment_code=&amp;element=Re&amp;spectr_charge=1&amp;type=E');return false">Campbell-Miller and Simard 1996 </a>.
+    </td>
+    <td class='bcn2'>
+      <A HREF="javascript:void(0)" ONCLICK="popbib('https://physics.nist.gov/cgi-bin/ASBib1/Elevbib/make_query.cgi?spectra=Re%20I&amp;method=EL&amp;method=TE&amp;method=ND&amp;method=IP&amp;method=SF&amp;method=QF&order=1');return false"
+        ONMOUSEOVER="self.status='Re  I: bibliography energy levels query';return true;"
+        ONMOUSEOUT="self.status=''; return true;" TARGET=_blank>Literature on Re  I Energy Levels</A>
+    </td>
+  </tr>
+</table>
+  <br>
+<table style="background-color:#FFFEEE; border:=1" frame="box" rules="groups" CELLSPACING="0" CELLPADDING="1">
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<colgroup>
+<tbody>
+<tr style="vertical-align:middle; background-color:#177A9C">
+<TH scope="col" style="text-align:left">&nbsp;Configuration&nbsp;</TH>
+<TH scope="col">&nbsp;Term&nbsp;</TH>
+<TH scope="col">&nbsp;<i>J</i>&nbsp;</TH>
+<TH scope="col">&nbsp;Level&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col">&nbsp;Uncertainty&nbsp;<br>&nbsp;(cm<sup>-1</sup>)&nbsp;</TH>
+<TH scope="col">&nbsp;Land&eacute;-g&nbsp;</TH>
+<TH scope="col" style="text-align:left">&nbsp;Reference&nbsp;</TH>
+</tr>
+</tbody>
+<tbody>
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>6</sup>S&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;         0.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.950&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Re I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=3466&comment_code=&amp;element=Re&amp;spectr_charge=1&amp;ref=3466&amp;type=E');return false">L3466</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>4</sup>P&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    11 583.96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.278&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    13 826.12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.485&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    15 165.89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.368&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>(<sup>5</sup>D)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>6</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    11 754.52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.545&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    14 216.86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.567&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    15 770.42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.309&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    16 327.51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.706&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    17 238.30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.521&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>4</sup>G&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    14 621.46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.151&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    15 058.19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.153&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    16 307.15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.242&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    16 619.28&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.175&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>4</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    17 330.82&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.255&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    19 457.89&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.361&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    19 757.91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.983&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    20 481.73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.451&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>7</sup>S)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>8</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>18 950.1</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.274&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>20 447.8</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.926&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>23 631.82</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.768&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>2</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    21 775.40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.135&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    24 425.40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.067&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>2</sup>G&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    22 160.04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.198&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    24 724.22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.03&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>2</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    22 422.83&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.781&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    23 154.81&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.189&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>2</sup>I&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    23 956.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.995&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    26 348.96&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.100&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>4</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    26 131.57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.650&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    27 514.31&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    28 030.32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.12&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    28 542.13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>(<sup>3</sup>P)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;b&nbsp;<sup>4</sup>P&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    26 661.43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.32&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    30 526.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>(<sup>3</sup>H)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>4</sup>H&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    27 130.14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.208&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    27 161.35&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    27 243.88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.18&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    28 809.87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.93&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>(<sup>5</sup>D)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;b&nbsp;<sup>4</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    27 141.13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.34&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    27 827.65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.888&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    29 800.38&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    30 131.57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>2</sup>S&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    27 384.80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>7</sup>S)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>6</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>28 854.18</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.871&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>28 889.72</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.709&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>28 961.55</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.333&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;a&nbsp;<sup>2</sup>H&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    30 559.91&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    31 399.30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>(<sup>3</sup>F)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;b&nbsp;<sup>4</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    30 645.33&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    31 186.08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    31 460.62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i><sup>2</sup>&nbsp;</td>
+ <td class="cnt">&nbsp;b&nbsp;<sup>2</sup>F&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    31 982.99&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    32 435.14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>4</sup>6<i>s</i><sup>2</sup>(<sup>5</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>6</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>32 443.61</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.762&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>32 591.63</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.500&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>33 408.73</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.454&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>34 520.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.440&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>35 923.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>(<sup>3</sup>G)6<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;b&nbsp;<sup>4</sup>G&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    33 281.65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    33 317.57&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    33 823.66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    34 194.27&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>4</sup>6<i>s</i><sup>2</sup>(<sup>5</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;y&nbsp;<sup>6</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>33 589.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.335&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>5</sup>S)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>4</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>35 267.94</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.385&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 797.95</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.620&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 915.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.495&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>5</sup>G)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>6</sup>G&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 063.65</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.626&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 381.41</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.990&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 520.74</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.216&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>38 994.73</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.25&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 916.39</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.314&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 493.34</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.364&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>4</sup>6<i>s</i><sup>2</sup>(<sup>5</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>6</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 381.41</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 765.65</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.335&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 064.92</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.335&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 196.74</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.405&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 655.99</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.444&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 926.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.745&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;376&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>37 697.66</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.219&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;396&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 670.52</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.107&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>5</sup>S)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;x&nbsp;<sup>6</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>39 844.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.223&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 569.36</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.504&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 702.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.962&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;408&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 808.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.351&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 810.17</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 821.83</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.126&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>5</sup>P)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;y&nbsp;<sup>6</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>40 946.53</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.534&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 313.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.278&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 557.08</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.655&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;411&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 163.91</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.325&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;414&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 453.18</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.372&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;418&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 843.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.190&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>5</sup>P)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;z&nbsp;<sup>4</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>41 991.56</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.61&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 254.19</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.578&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 044.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.449&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 407.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.368&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;421&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>42 140.06</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.249&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>7</sup>S)7<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;e&nbsp;<sup>8</sup>S&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    42 598.27&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.957&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;433&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 341.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.975&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;434&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>?&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 409.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 453.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.336&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;438&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 815.01</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.348&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;439&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 949.98</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.385&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>43 996.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.26&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;440&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    44 054.21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;441&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 148.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.573&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;442&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 224.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.244&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;443&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 308.73</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.223&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>4</sup>D&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 416.33</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>7</sup>S)7<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;e&nbsp;<sup>6</sup>S&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    44 703.37&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.866&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;447&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 720.09</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.330&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4490&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 901.15</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.253&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;449&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    44 902.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4494&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>44 946.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.905&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>6</sup>(<sup>5</sup>D)6<i>p</i>&nbsp;</td>
+ <td class="cnt">&nbsp;y&nbsp;<sup>6</sup>F&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 082.63</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.40&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 374.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.341&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 932.55</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.31&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 022.77</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.495&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 667.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.27&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 859.53</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.410&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;451&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 121.81</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.674&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;453&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 332.03</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.088&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 343.57</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.131&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;454&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 462.83</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.300&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;<sup>4</sup>P&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 817.26</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.197&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;458&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 876.34</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.384&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;459&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 904.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.175&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>45 937.18</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.298&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;461&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 112.24</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.405&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 141.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.716&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;463&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 352.99</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.271&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;465&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 509.40</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.371&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;466&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 649.42</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.334&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;467&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>46 733.38</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.858&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;470&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 004.34</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.285&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;471&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 101.61</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.893&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 172.1</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 172.9</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.215&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;472&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 205.73</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.106&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;473&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 358.36</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.151&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;475&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 506.79</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.26&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;476&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 664.74</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.50&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 669.01</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.196&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4770&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 703.78</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.443&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4777&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 779.91</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.362&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;478&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 859.93</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 899.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.217&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;479&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>47 970.82</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.169&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;481&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 184.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.252&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;485&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 569.63</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.27&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;487&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 786.35</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.53&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;488&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>48 857.60</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.24&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;490&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 027.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.499&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;491&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 170.76</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.135&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;492&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 250.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.263&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 286.07</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.075&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4954&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 540.96</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4957&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 573.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.344&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;4958&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 582.61</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.058&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;498&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 863.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.175&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>49 895.57</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.989&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5011&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 110.28</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.765&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5015&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 158.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.422&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5019&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 196.94</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.345&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;502&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 263.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.234&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;503&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 310.70</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.170&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>7</sup>S)6<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;e&nbsp;<sup>8</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 332.60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 340.62&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   2.027&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 359.23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.820&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 395.72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.690&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 464.34&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.629&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;504&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 401.01</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.055&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 463.80</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.144&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;505&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 571.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.935&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;506&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 663.51</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.220&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;508&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 869.00</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.240&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;509&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>50 934.18</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.385&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;509&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 973.17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.489&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>7</sup>S)6<i>d</i>&nbsp;</td>
+ <td class="cnt">&nbsp;e&nbsp;<sup>6</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 988.47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.558&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    50 994.15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.548&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    51 030.73&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    51 035.56&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.546&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    51 049.87&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;510&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 027.96</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;511&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 183.00</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.456&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 193.49</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;512&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 229.64</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.231&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;514&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 477.15</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.97&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 486.29</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;515&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 578.05</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.92&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 590.08</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.02&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;516&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 647.82</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.139&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;518&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 874.43</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.29&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;519&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 945.94</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>51 955.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.200&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;520&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 001.37</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.357&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;521&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 122.35</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;522&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 218.11</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.208&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 227.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 278.28</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.422&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;523&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 373.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;524&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 469.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.315&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 472.31</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;526&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 610.01</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;527&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 741.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;528&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 857.44</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.30&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 881.34</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.05&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;52951&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 951.59</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.14&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;52954&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>52 954.46</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;530&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 058.74</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.184&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;531&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 125.19</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.145&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;532&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 288.28</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.372&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 293.72</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.323&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5332&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 320.95</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.38&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5333&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 335.94</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.290&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5337&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 379.35</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.09&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5338&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 389.73</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>5</sup>6<i>s</i>(<sup>7</sup>S)8<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;f&nbsp;<sup>8</sup>S&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    53 392.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;534&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 467.57</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;537&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 738.46</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.203&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;538&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 842.53</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.169&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;539&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 928.90</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.113&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>53 948.73</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.13&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5401&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 018.19</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.723&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;5408&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 086.69</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;541&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 177.25</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.270&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;542&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 268.18</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.290&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;544&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 409.61</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.069&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 467.40</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.361&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;545&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 513.84</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 554.61</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;547&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 729.52</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;548&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 813.12</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.185&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 823.02</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.183&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;549&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>54 968.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.314&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;552&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>55 223.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.149&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;554&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>55 454.48</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;557&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>55 776.51</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.056&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;559&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>55 901.20</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>55 902.01</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.447&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>55 912.42</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.06&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;563&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>56 307.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;564&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>56 411.22</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>56 451.87</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.287&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;565&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>56 523.41</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;566&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>56 699.41</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.25&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;568&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>56 822.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>56 866.06</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.479&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;570&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 073.31</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   0.94&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 090.29</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;571&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 172.70</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;572&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 280.86</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;573&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 371.75</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 391.44</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.30&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;574&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 452.83</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;575&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 524.31</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.40&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;576&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>57 656.85</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.19&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">5<i>d</i><sup>4</sup>6<i>s</i><sup>2</sup>(<sup>5</sup>D)7<i>s</i>&nbsp;</td>
+ <td class="cnt">&nbsp;f&nbsp;<sup>6</sup>D&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    57 665.43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    58 060.64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    58 368.90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    59 268.79&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;580&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>58 050.58</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.111&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;582&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>58 260.03</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.43&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>58 279.31</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;583&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>58 332.42</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;584&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>58 442.51</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.32&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;585&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>1</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>58 541.88</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;586&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>58 619.32</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.165&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;591&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>59 127.30</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.20&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>59 171.73</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;592&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>3</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>59 293.45</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;593&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>9</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>59 394.29</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;594&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>59 412.46</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.15&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;597&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>59 784.67</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;599&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>59 926.91</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.100&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;607&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>60 737.28</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;608&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>5</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>60 837.10</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.22&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;621&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>62 142.97</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;623&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>62 350.13</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;624&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>7</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>62 493.51</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.17&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+ <tr class="lmt"> <td class="lft">Re&nbsp;II&nbsp;(5<i>d</i><sup>5</sup>6<i>s</i>&nbsp;<sup>7</sup>S<sub>3</sub>)&nbsp;</td>
+ <td class="cnt">&nbsp;Limit&nbsp;</td>
+
+ <td class="cnt">&nbsp;---&nbsp;</td>
+ <td class="fix">&nbsp;    63 181.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;                 0.9&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;<a class='bib' ONMOUSEOVER="self.status='EL Bibliographic Reference for Re I'; return true;" ONMOUSEOUT="self.status='';return true;" TARGET="_blank"  HREF="javascript:void(0)" ONCLICK="popded('https://physics.nist.gov/cgi-bin/ASBib1/get_ASBib_ref.cgi?db=el&db_id=11604&comment_code=&amp;element=Re&amp;spectr_charge=1&amp;ref=11604&amp;type=E');return false">L11604</a>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;632&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>11</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>63 267.63</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.135&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;637&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>63 772.40</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+
+<tr class="bsl">
+ <td class="lft">&nbsp;</td>
+ <td class="cnt">&nbsp;639&deg;&nbsp;</td>
+
+ <td class="cnt">&nbsp;<sup>13</sup>/<sub>2</sub>&nbsp;</td>
+ <td class="fix">&nbsp;    <i>63 934.76</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;&nbsp;</td>
+ <td class="fix">&nbsp;   1.07&nbsp;&nbsp;</td>
+ <td style="text-align:right">&nbsp;&nbsp;</td>
+</tr>
+
+</tbody>
+</table>
+
+<p style="color:black; font-family: helvetica,arial; font-weight:bold">If you did not find the data you need, please <a href="mailto:alexander.kramida@nist.gov?subject=Missing%20data%20in%20ASD&amp;body=Z=75%200%20levels">inform the ASD Team</a>.</p><table style="width:100%; border:0; margin-top:0">
+<tr><td style="text-align:left"><a href="https://physics.nist.gov/PhysRefData/ASD/index.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/ASD-sm.gif" style="border:0" width="100" height="47"
+alt="[ASD Home]" title="ASD Home"></a><a href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Lines.gif" style="border:0" width="70" height="47"
+alt="[Lines Query]" title="Lines Query"></a><a href="https://physics.nist.gov/PhysRefData/ASD/levels_form.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/Levels.gif" style="border:0" width="79" height="47"
+alt="[Levels Query]" title="Levels Query"></a><a href="https://www.nist.gov/pml/atomic-spectra-database-contents"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/List.gif" style="border:0" width="77" height="47"
+alt="[List of Spectra]" title="List of Spectra"></a><a href="https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html"><img
+src="https://physics.nist.gov/PhysRefData/ASD/Images/GS-IE.gif" style="border:0" width="124" height="47"
+alt="[Ground States and Ionization Energies]" title="Ground States and Ionization Energies"></a><a
+href="https://physics.nist.gov/PhysRefData/ASBib1/index.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Bib.gif" style="border:0"
+width="98" height="47" alt="[Bibliography]" title="Bibliography"></a><a
+href="https://physics.nist.gov/PhysRefData/ASD/Html/help.html"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/Help.gif" style="border:0"
+width="55" height="47" alt="[Help]" title="Help"/></a></td>
+<td style="text-align:right"><img src="https://physics.nist.gov/PhysRefData/ASD/Images/nist-pl-black.gif" style="border:0" width="136" height="68"
+usemap="#NIST-PL" alt="NIST Physical Measurement Laboratory"/></td>
+</tr></table>
+
+
+</body>
+</html>
