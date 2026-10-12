@@ -63,4 +63,6 @@ if(win)win.document.body.scrollTop=win.document.getElementsByTagName("table")[3]
 
 }
 
-window.onunload=function(){if(win)win.close()}
+
+window.onpagehide=function(){if(win)win.close()}
+//window.onunload=function(){if(win)win.close()}
